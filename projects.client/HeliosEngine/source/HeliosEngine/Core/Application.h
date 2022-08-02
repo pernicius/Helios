@@ -3,6 +3,8 @@
 #include <string>
 #include <filesystem>
 
+#include "HeliosEngine/Core/Log.h"
+
 
 namespace HeliosEngine {
 
@@ -17,7 +19,7 @@ namespace HeliosEngine {
 
 		const char* operator[](int index) const
 		{
-//			LOG_CORE_ASSERT(index < Count, "");
+			LOG_CORE_ASSERT(index < Count, "");
 			return Args[index];
 		}
 	};

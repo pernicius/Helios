@@ -2,6 +2,7 @@
 
 #include "HeliosEngine/Core/Application.h"
 #include "HeliosEngine/Core/EntryPoint.h"
+#include "HeliosEngine/Core/Log.h"
 
 
 namespace HeliosEngine {
@@ -23,7 +24,7 @@ namespace HeliosEngine {
 	Application::Application(const ApplicationSpecification& specification)
 		: m_Specification(specification)
 	{
-//		LOG_CORE_ASSERT(!s_Instance, "Application already exists!");
+		LOG_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
 		// Set working directory here

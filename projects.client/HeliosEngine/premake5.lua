@@ -68,8 +68,18 @@ project "HeliosEngine"
 		}
 
 	filter "configurations:Debug"
+
+		defines {
+			"HE_LOG_LEVEL=0",
+			"HE_LOG_ASSERTS"
+		}
 		
 	filter "configurations:Release"
+
+		defines {
+			"HE_LOG_LEVEL=2",
+--			"HE_LOG_ASSERTS"
+		}
 
 	filter {}
 
