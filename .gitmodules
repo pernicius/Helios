@@ -1,0 +1,3 @@
+[submodule "projects.client/HeliosEngine/vendor/glfw"]
+	path = projects.client/HeliosEngine/vendor/glfw
+	url = https://github.com/pernicius/glfw.git

@@ -20,14 +20,14 @@ project "HeliosEngine"
 	}
 	
 	includedirs {
-		"source"
+		"source",
 --		"vendor/spdlog/include",
---		"vendor/GLFW/include",
+		"vendor/glfw/include",
 --		"vendor/glad/include"
 	}
 	
 	links {
---		"HeliosEngine.GLFW",
+		"HeliosEngine.glfw"
 --		"HeliosEngine.glad2",
 --		"opengl32.lib"
 	}
@@ -73,5 +73,6 @@ project "HeliosEngine"
 
 	filter {}
 
---	include("vendor/GLFW")
---	include("vendor/glad")
+	group "client/HeliosEngine/vendor"
+		include("vendor/glfw")
+--		include("vendor/glad")
