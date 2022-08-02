@@ -23,12 +23,12 @@ project "HeliosEngine"
 		"source",
 --		"vendor/spdlog/include",
 		"vendor/glfw/include",
---		"vendor/glad/include"
+		"vendor/glad/include"
 	}
 	
 	links {
-		"HeliosEngine.glfw"
---		"HeliosEngine.glad2",
+		"HeliosEngine.glfw",
+		"HeliosEngine.glad2",
 --		"opengl32.lib"
 	}
 
@@ -75,4 +75,4 @@ project "HeliosEngine"
 
 	group "client/HeliosEngine/vendor"
 		include("vendor/glfw")
---		include("vendor/glad")
+		include("vendor/glad")
