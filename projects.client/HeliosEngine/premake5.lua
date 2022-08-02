@@ -16,12 +16,12 @@ project "HeliosEngine"
 	pchsource "source/pch_engine.cpp"
 
 	defines {
---		"GLFW_INCLUDE_NONE"
+		"GLFW_INCLUDE_NONE"
 	}
 	
 	includedirs {
 		"source",
---		"vendor/spdlog/include",
+		"vendor/spdlog/include",
 		"vendor/glfw/include",
 		"vendor/glad/include"
 	}
