@@ -10,6 +10,8 @@ namespace HeliosEngine {
 
 	int AppMain(int argc, char** argv)
 	{
+		Log::Init();
+
 		auto app = CreateApplication({ argc, argv });
 		app->Run();
 		delete app;

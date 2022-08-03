@@ -1,8 +1,6 @@
 #include "pch_game.h"
 
 #include <HeliosEngine/HeliosEngine.h>
-//#include <HeliosEngine/Core/EntryPoint.h>
-//#include <Helios/Core/Log.h>
 
 
 class HeliosGame : public HeliosEngine::Application
@@ -11,12 +9,12 @@ public:
 	HeliosGame(const HeliosEngine::ApplicationSpecification& specification)
 		: HeliosEngine::Application(specification)
 	{
-//		LOG_INFO("HeliosGame()");
+		LOG_INFO("HeliosGame()");
 	}
 
 	~HeliosGame()
 	{
-//		LOG_INFO("~HeliosGame()");
+		LOG_INFO("~HeliosGame()");
 	}
 };
 
