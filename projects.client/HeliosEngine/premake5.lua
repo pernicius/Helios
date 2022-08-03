@@ -40,8 +40,6 @@ project "HeliosEngine"
 	filter "platforms:Windows"
 
 		defines {
-			"HE_BUILDWITH_PLATFORM_GLFW",
---			"HE_BUILDWITH_PLATFORM_WINDOWS",
 --			"HE_BUILDWITH_RENDERER_DIRECTX",
 			"HE_BUILDWITH_RENDERER_OPENGL",
 --			"HE_BUILDWITH_RENDERER_VULKAN",
@@ -50,8 +48,6 @@ project "HeliosEngine"
 	filter "platforms:Linux"
 
 		defines {
-			"HE_BUILDWITH_PLATFORM_GLFW",
---			"HE_BUILDWITH_PLATFORM_WINDOWS",
 --			"HE_BUILDWITH_RENDERER_DIRECTX",
 			"HE_BUILDWITH_RENDERER_OPENGL",
 --			"HE_BUILDWITH_RENDERER_VULKAN",
@@ -60,8 +56,6 @@ project "HeliosEngine"
 	filter "platforms:MacOS"
 
 		defines {
-			"HE_BUILDWITH_PLATFORM_GLFW",
---			"HE_BUILDWITH_PLATFORM_WINDOWS",
 --			"HE_BUILDWITH_RENDERER_DIRECTX",
 			"HE_BUILDWITH_RENDERER_OPENGL",
 --			"HE_BUILDWITH_RENDERER_VULKAN",
