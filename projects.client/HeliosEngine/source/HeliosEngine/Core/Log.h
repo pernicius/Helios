@@ -11,7 +11,7 @@ namespace HeliosEngine {
 	class Log
 	{
 	public:
-		static void Init();
+		static void Init(const std::string& filename = "HeliosEngine.log", const std::string& path = "");
 
 		static Ref<spdlog::logger>& GetCoreLogger() { return s_CoreLogger; }
 		static Ref<spdlog::logger>& GetAppLogger() { return s_AppLogger; }

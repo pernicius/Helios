@@ -1,6 +1,7 @@
 #include "pch_engine.h"
 
 #include "HeliosEngine/Core/Log.h"
+#include "HeliosEngine/Utils/Path.h"
 
 #include "spdlog/sinks/stdout_color_sinks.h"
 #include "spdlog/sinks/basic_file_sink.h"
@@ -12,12 +13,15 @@ namespace HeliosEngine {
 	Ref<spdlog::logger> Log::s_AppLogger;
 
 
-	void Log::Init()
+	void Log::Init(const std::string& filename, const std::string& path)
 	{
 		std::vector<spdlog::sink_ptr> logSinks;
 
+		std::string file = (path.empty() ? "" : path + DIR_SEP) +
+		                   (filename.empty() ? "logger.log" : filename);
+
 		logSinks.emplace_back(std::make_shared<spdlog::sinks::stdout_color_sink_mt>());
-		logSinks.emplace_back(std::make_shared<spdlog::sinks::basic_file_sink_mt>("Helios.log", true));
+		logSinks.emplace_back(std::make_shared<spdlog::sinks::basic_file_sink_mt>(file, true));
 
 		logSinks[0]->set_pattern("%T %4n:%-5!l >> %v");
 		logSinks[1]->set_pattern("%T %4n:%-5!l >> %^%v%$");

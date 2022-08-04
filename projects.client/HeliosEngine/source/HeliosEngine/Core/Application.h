@@ -22,11 +22,18 @@ namespace HeliosEngine {
 		}
 	};
 
+	enum Hints
+	{
+		HINT_USE_CWD            = (1 << 0),
+		HINT_USE_EXEPATH_AS_CWD = (1 << 1),
+	};
+
 	struct ApplicationSpecification
 	{
 		std::string Name;
 		std::string WorkingDirectory;
 		ApplicationCommandLineArgs CommandLineArgs;
+		unsigned int hints = 0;
 	};
 
 
