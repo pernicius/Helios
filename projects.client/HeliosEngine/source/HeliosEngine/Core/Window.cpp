@@ -16,7 +16,7 @@ namespace HeliosEngine {
 
 	static void GLFWErrorCallback(int error, const char* description)
 	{
-		LOG_CORE_ERROR("GLFW Error ({0}): {1}", error, description);
+		LOG_GLFW_ERROR("({0}): {1}", error, description);
 	}
 
 

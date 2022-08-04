@@ -14,9 +14,11 @@ namespace HeliosEngine {
 		static void Init(const std::string& filename = "HeliosEngine.log", const std::string& path = "");
 
 		static Ref<spdlog::logger>& GetCoreLogger() { return s_CoreLogger; }
+		static Ref<spdlog::logger>& GetGLFWLogger() { return s_GLFWLogger; }
 		static Ref<spdlog::logger>& GetAppLogger() { return s_AppLogger; }
 	private:
 		static Ref<spdlog::logger> s_CoreLogger;
+		static Ref<spdlog::logger> s_GLFWLogger;
 		static Ref<spdlog::logger> s_AppLogger;
 	};
 
@@ -47,12 +49,16 @@ namespace HeliosEngine {
 #define LOG_CORE_FATAL(...) (HE_LOG_LEVEL <= HE_LOG_LEVEL_FATAL) ? ::HeliosEngine::Log::GetCoreLogger()->critical(__VA_ARGS__) : (void)0
 
 // Logging macros for Application
+#define LOG_TRACE(...)      (HE_LOG_LEVEL <= HE_LOG_LEVEL_TRACE) ? ::HeliosEngine::Log::GetAppLogger()->trace(__VA_ARGS__)     : (void)0
 #define LOG_DEBUG(...)      (HE_LOG_LEVEL <= HE_LOG_LEVEL_DEBUG) ? ::HeliosEngine::Log::GetAppLogger()->debug(__VA_ARGS__)     : (void)0
 #define LOG_INFO(...)       (HE_LOG_LEVEL <= HE_LOG_LEVEL_INFO)  ? ::HeliosEngine::Log::GetAppLogger()->info(__VA_ARGS__)      : (void)0
 #define LOG_WARN(...)       (HE_LOG_LEVEL <= HE_LOG_LEVEL_WARN)  ? ::HeliosEngine::Log::GetAppLogger()->warn(__VA_ARGS__)      : (void)0
 #define LOG_ERROR(...)      (HE_LOG_LEVEL <= HE_LOG_LEVEL_ERROR) ? ::HeliosEngine::Log::GetAppLogger()->error(__VA_ARGS__)     : (void)0
-#define LOG_TRACE(...)      (HE_LOG_LEVEL <= HE_LOG_LEVEL_TRACE) ? ::HeliosEngine::Log::GetAppLogger()->trace(__VA_ARGS__)     : (void)0
 #define LOG_FATAL(...)      (HE_LOG_LEVEL <= HE_LOG_LEVEL_FATAL) ? ::HeliosEngine::Log::GetAppLogger()->critical(__VA_ARGS__)  : (void)0
+
+// Logging macros for GLFW
+#define LOG_GLFW_DEBUG(...) (HE_LOG_LEVEL <= HE_LOG_LEVEL_DEBUG) ? ::HeliosEngine::Log::GetGLFWLogger()->debug(__VA_ARGS__)    : (void)0
+#define LOG_GLFW_ERROR(...) (HE_LOG_LEVEL <= HE_LOG_LEVEL_ERROR) ? ::HeliosEngine::Log::GetGLFWLogger()->error(__VA_ARGS__)    : (void)0
 
 // ASSERT macros
 #ifdef HE_LOG_ASSERTS

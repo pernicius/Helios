@@ -3,6 +3,7 @@
 #include "HeliosEngine/Core/Base.h"
 #include "HeliosEngine/Events/Event.h"
 
+// #include "glad/gl.h" not needed here
 #include "GLFW/glfw3.h"
 
 
