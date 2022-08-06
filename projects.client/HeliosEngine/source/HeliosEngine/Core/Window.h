@@ -47,6 +47,7 @@ namespace HeliosEngine {
 
 	private:
 		void Init(const WindowSpecification& spec);
+		void InitCallbacks();
 		void Shutdown();
 
 	private:

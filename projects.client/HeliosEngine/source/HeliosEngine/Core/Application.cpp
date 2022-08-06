@@ -6,7 +6,6 @@
 #include "HeliosEngine/Utils/Path.h"
 
 #include "GLFW/glfw3.h"
-#include <iostream>
 
 
 namespace HeliosEngine {
@@ -74,20 +73,25 @@ namespace HeliosEngine {
 
 	void Application::Run()
 	{
-glfwInit();
-uint64_t f = glfwGetTimerFrequency();
-uint64_t s = glfwGetTimerValue();
-int c = 0;
+//uint64_t f = glfwGetTimerFrequency();
+//uint64_t s = glfwGetTimerValue();
+//int c = 0;
 		while (m_Running)
 		{
-c++;
-uint64_t n = glfwGetTimerValue();
-if (n - s >= f)
-{
-s = n;
-std::cout << "cycles: " << c << "/s" << std::endl;
-c = 0;
-}
+//c++;
+//uint64_t n = glfwGetTimerValue();
+//if (n - s >= f)
+//{
+//s = n;
+//std::cout << "cycles: " << c << "/s" << std::endl;
+//c = 0;
+//}
+			if (!m_Minimized)
+			{
+				// TODO
+			}
+
+			m_Window->OnUpdate();
 		}
 	}
 

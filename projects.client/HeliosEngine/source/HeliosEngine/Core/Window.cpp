@@ -6,6 +6,8 @@
 #include "HeliosEngine/Events/MouseEvent.h"
 #include "HeliosEngine/Events/KeyEvent.h"
 
+#include "GLFW/glfw3.h"
+
 
 namespace HeliosEngine {
 
@@ -67,23 +69,50 @@ namespace HeliosEngine {
 		SetVSync(true);
 
 		// Set GLFW callbacks
-		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
-			{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-				data.Width = width;
-				data.Height = height;
+		InitCallbacks();
+	}
 
-				WindowResizeEvent event(width, height);
-				data.EventCallback(event);
-			});
 
-		glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window)
-			{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-				WindowCloseEvent event;
-				data.EventCallback(event);
-			});
+	void Window::Shutdown()
+	{
+		glfwDestroyWindow(m_Window);
+		--s_GLFWWindowCount;
 
+		if (s_GLFWWindowCount == 0)
+		{
+			glfwTerminate();
+		}
+	}
+
+
+	void Window::OnUpdate()
+	{
+		glfwPollEvents();
+		glfwSwapBuffers(m_Window);
+//		m_Context->SwapBuffers();
+	}
+
+
+	void Window::SetVSync(bool enabled)
+	{
+		if (enabled)
+			glfwSwapInterval(1);
+		else
+			glfwSwapInterval(0);
+
+		m_Data.VSync = enabled;
+	}
+
+
+	bool Window::IsVSync() const
+	{
+		return m_Data.VSync;
+	}
+
+
+	void Window::InitCallbacks()
+	{
+		// Set GLFW callbacks (Key input)
 		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
@@ -110,7 +139,6 @@ namespace HeliosEngine {
 				}
 				}
 			});
-
 		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode)
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
@@ -119,6 +147,15 @@ namespace HeliosEngine {
 				data.EventCallback(event);
 			});
 
+		// Set GLFW callbacks (Mouse input)
+		glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, double xPos, double yPos)
+			{
+				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+
+				MouseMovedEvent event((float)xPos, (float)yPos);
+				data.EventCallback(event);
+			});
+		//glfwSetCursorEnterCallback
 		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
@@ -139,7 +176,6 @@ namespace HeliosEngine {
 				}
 				}
 			});
-
 		glfwSetScrollCallback(m_Window, [](GLFWwindow* window, double xOffset, double yOffset)
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
@@ -148,49 +184,38 @@ namespace HeliosEngine {
 				data.EventCallback(event);
 			});
 
-		glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, double xPos, double yPos)
+		// Set GLFW callbacks (Joystick)
+		//glfwSetJoystickCallback
+
+		// Set GLFW callbacks (Path drop input)
+		//glfwSetDropCallback
+
+		// Set GLFW callbacks (Window events)
+		glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window)
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-
-				MouseMovedEvent event((float)xPos, (float)yPos);
+				WindowCloseEvent event;
 				data.EventCallback(event);
 			});
-	}
+		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
+			{
+				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+				data.Width = width;
+				data.Height = height;
+
+				WindowResizeEvent event(width, height);
+				data.EventCallback(event);
+			});
+		//glfwSetWindowContentScaleCallback
+		//glfwSetWindowPosCallback
+		//glfwSetWindowIconifyCallback
+		//glfwSetWindowMaximizeCallback
+		//glfwSetWindowFocusCallback
+		//glfwSetWindowRefreshCallback
 
 
-	void Window::Shutdown()
-	{
-		glfwDestroyWindow(m_Window);
-		--s_GLFWWindowCount;
-
-		if (s_GLFWWindowCount == 0)
-		{
-			glfwTerminate();
-		}
-	}
-
-
-	void Window::OnUpdate()
-	{
-		glfwPollEvents();
-//		m_Context->SwapBuffers();
-	}
-
-
-	void Window::SetVSync(bool enabled)
-	{
-		if (enabled)
-			glfwSwapInterval(1);
-		else
-			glfwSwapInterval(0);
-
-		m_Data.VSync = enabled;
-	}
-
-
-	bool Window::IsVSync() const
-	{
-		return m_Data.VSync;
+		// Set GLFW callbacks (Framebuffer events)
+		//glfwSetFramebufferSizeCallback
 	}
 
 
