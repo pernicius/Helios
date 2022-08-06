@@ -33,8 +33,18 @@ project "HeliosGame"
 
 	filter "configurations:Debug"
 		kind "ConsoleApp"
-		
+	
+		defines {
+			"HE_LOG_LEVEL=0",
+			"HE_LOG_ASSERTS"
+		}
+	
 	filter "configurations:Release"
 		kind "WindowedApp"
+		
+		defines {
+			"HE_LOG_LEVEL=2",
+--			"HE_LOG_ASSERTS"
+		}
 
 	filter {}
