@@ -51,6 +51,21 @@ namespace HeliosEngine {
 	{
 	}
 
+
+	void Application::PushLayer(Layer* layer)
+	{
+		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
+	}
+
+
+	void Application::PushOverlay(Layer* layer)
+	{
+		m_LayerStack.PushOverlay(layer);
+		layer->OnAttach();
+	}
+
+
 	void Application::Close()
 	{
 		m_Running = false;
@@ -63,12 +78,12 @@ namespace HeliosEngine {
 		dispatcher.Dispatch<WindowCloseEvent>(HE_BIND_EVENT_FN(Application::OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(HE_BIND_EVENT_FN(Application::OnWindowResize));
 
-//		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)
-//		{
-//			if (e.Handled)
-//				break;
-//			(*it)->OnEvent(e);
-//		}
+		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)
+		{
+			if (e.Handled)
+				break;
+			(*it)->OnEvent(e);
+		}
 	}
 
 	void Application::Run()
@@ -88,7 +103,9 @@ namespace HeliosEngine {
 //}
 			if (!m_Minimized)
 			{
-				// TODO
+				for (Layer* layer : m_LayerStack)
+					layer->OnUpdate();
+//TODO				layer->OnUpdate(timestep);
 			}
 
 			m_Window->OnUpdate();

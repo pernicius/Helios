@@ -1,6 +1,7 @@
 #pragma once
 
 #include "HeliosEngine/Core/Base.h"
+#include "HeliosEngine/Core/LayerStack.h"
 #include "HeliosEngine/Core/Log.h"
 #include "HeliosEngine/Core/Window.h"
 #include "HeliosEngine/Events/Event.h"
@@ -52,6 +53,9 @@ namespace HeliosEngine {
 
 		void OnEvent(Event& e);
 
+		void PushLayer(Layer* layer);
+		void PushOverlay(Layer* layer);
+
 	private:
 		void Run();
 		bool OnWindowClose(WindowCloseEvent& e);
@@ -61,6 +65,7 @@ namespace HeliosEngine {
 		Scope<Window> m_Window;
 		bool m_Running = true;
 		bool m_Minimized = false;
+		LayerStack m_LayerStack;
 	private:
 		static Application* s_Instance;
 		friend int AppMain(int argc, char** argv);
