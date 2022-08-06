@@ -3,6 +3,27 @@
 #include <HeliosEngine/HeliosEngine.h>
 
 
+class ExampleLayer : public HeliosEngine::Layer
+{
+public:
+	ExampleLayer()
+		: Layer("Example")
+	{
+	}
+
+
+	void OnUpdate() override
+	{
+	}
+
+
+	void OnEvent(HeliosEngine::Event& event) override
+	{
+		LOG_TRACE("{0}", event);
+	}
+};
+
+
 class HeliosGame : public HeliosEngine::Application
 {
 public:
@@ -10,6 +31,7 @@ public:
 		: HeliosEngine::Application(specification)
 	{
 		LOG_INFO("HeliosGame()");
+		PushLayer(new ExampleLayer());
 	}
 
 	~HeliosGame()
