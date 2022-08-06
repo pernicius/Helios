@@ -23,9 +23,7 @@ HeliosEngine::Application* HeliosEngine::CreateApplication(HeliosEngine::Applica
 {
 	ApplicationSpecification spec;
 	spec.Name = "HeliosGame";
-	//TODO	spec.WorkingDirectory = "TODO: HOW DO I GET THE EXE-PATH???";
 	spec.CommandLineArgs = args;
-//	spec.hints |= HeliosEngine::Hints::HINT_USE_CWD;
 	spec.hints |= HeliosEngine::Hints::HINT_USE_EXEPATH_AS_CWD;
 
 	return new HeliosGame(spec);

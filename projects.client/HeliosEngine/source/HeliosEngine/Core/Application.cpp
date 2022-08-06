@@ -5,6 +5,9 @@
 #include "HeliosEngine/Core/Log.h"
 #include "HeliosEngine/Utils/Path.h"
 
+#include "GLFW/glfw3.h"
+#include <iostream>
+
 
 namespace HeliosEngine {
 
@@ -39,6 +42,9 @@ namespace HeliosEngine {
 
 		LOG_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
+
+		m_Window = Window::Create(WindowSpecification(m_Specification.Name));
+		m_Window->SetEventCallback(HE_BIND_EVENT_FN(Application::OnEvent));
 	}
 
 
@@ -46,12 +52,64 @@ namespace HeliosEngine {
 	{
 	}
 
+	void Application::Close()
+	{
+		m_Running = false;
+	}
+
+
+	void Application::OnEvent(Event& e)
+	{
+		EventDispatcher dispatcher(e);
+		dispatcher.Dispatch<WindowCloseEvent>(HE_BIND_EVENT_FN(Application::OnWindowClose));
+		dispatcher.Dispatch<WindowResizeEvent>(HE_BIND_EVENT_FN(Application::OnWindowResize));
+
+//		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)
+//		{
+//			if (e.Handled)
+//				break;
+//			(*it)->OnEvent(e);
+//		}
+	}
 
 	void Application::Run()
 	{
+glfwInit();
+uint64_t f = glfwGetTimerFrequency();
+uint64_t s = glfwGetTimerValue();
+int c = 0;
 		while (m_Running)
 		{
+c++;
+uint64_t n = glfwGetTimerValue();
+if (n - s >= f)
+{
+s = n;
+std::cout << "cycles: " << c << "/s" << std::endl;
+c = 0;
+}
 		}
+	}
+
+
+	bool Application::OnWindowClose(WindowCloseEvent& e)
+	{
+		m_Running = false;
+		return true;
+	}
+
+
+	bool Application::OnWindowResize(WindowResizeEvent& e)
+	{
+		if (e.GetWidth() == 0 || e.GetHeight() == 0)
+		{
+			m_Minimized = true;
+			return false;
+		}
+
+		m_Minimized = false;
+
+		return false;
 	}
 
 

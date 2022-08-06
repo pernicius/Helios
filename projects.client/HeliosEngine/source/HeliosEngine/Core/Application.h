@@ -2,6 +2,9 @@
 
 #include "HeliosEngine/Core/Base.h"
 #include "HeliosEngine/Core/Log.h"
+#include "HeliosEngine/Core/Window.h"
+#include "HeliosEngine/Events/Event.h"
+#include "HeliosEngine/Events/ApplicationEvent.h"
 
 
 namespace HeliosEngine {
@@ -42,16 +45,24 @@ namespace HeliosEngine {
 	public:
 		Application(const ApplicationSpecification& specification);
 		virtual ~Application();
+
 		static Application& Get() { return *s_Instance; }
 		const ApplicationSpecification& GetSpecification() const { return m_Specification; }
+		void Close();
+
+		void OnEvent(Event& e);
 
 	private:
 		void Run();
-		static Application* s_Instance;
+		bool OnWindowClose(WindowCloseEvent& e);
+		bool OnWindowResize(WindowResizeEvent& e);
+	private:
 		ApplicationSpecification m_Specification;
+		Scope<Window> m_Window;
 		bool m_Running = true;
 		bool m_Minimized = false;
-
+	private:
+		static Application* s_Instance;
 		friend int AppMain(int argc, char** argv);
 	};
 

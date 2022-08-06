@@ -2,6 +2,9 @@
 
 #include "HeliosEngine/Core/Window.h"
 #include "HeliosEngine/Core/Log.h"
+#include "HeliosEngine/Events/ApplicationEvent.h"
+#include "HeliosEngine/Events/MouseEvent.h"
+#include "HeliosEngine/Events/KeyEvent.h"
 
 
 namespace HeliosEngine {
@@ -56,6 +59,7 @@ namespace HeliosEngine {
 			++s_GLFWWindowCount;
 		}
 
+		glfwMakeContextCurrent(m_Window);
 //		m_Context = GraphicsContext::Create(m_Window);
 //		m_Context->Init();
 
@@ -63,7 +67,6 @@ namespace HeliosEngine {
 		SetVSync(true);
 
 		// Set GLFW callbacks
-#if 0
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
@@ -152,7 +155,6 @@ namespace HeliosEngine {
 				MouseMovedEvent event((float)xPos, (float)yPos);
 				data.EventCallback(event);
 			});
-#endif
 	}
 
 
