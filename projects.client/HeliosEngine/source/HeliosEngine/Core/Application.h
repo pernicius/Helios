@@ -56,6 +56,8 @@ namespace HeliosEngine {
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
 
+		Window& GetWindow() { return *m_Window; }
+
 	private:
 		void Run();
 		bool OnWindowClose(WindowCloseEvent& e);
