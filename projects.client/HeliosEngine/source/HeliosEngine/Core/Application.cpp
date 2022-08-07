@@ -6,6 +6,7 @@
 #include "HeliosEngine/Utils/Path.h"
 
 #include "GLFW/glfw3.h"
+#include "glad/gl.h"
 
 
 namespace HeliosEngine {
@@ -90,21 +91,19 @@ namespace HeliosEngine {
 
 	void Application::Run()
 	{
-//uint64_t f = glfwGetTimerFrequency();
-//uint64_t s = glfwGetTimerValue();
-//int c = 0;
+/* DEBUG */uint64_t f = glfwGetTimerFrequency();
+/* DEBUG */uint64_t s = glfwGetTimerValue();
+/* DEBUG */int c = 0;
 		while (m_Running)
 		{
-//c++;
-//uint64_t n = glfwGetTimerValue();
-//if (n - s >= f)
-//{
-//s = n;
-//std::cout << "cycles: " << c << "/s" << std::endl;
-//c = 0;
-//}
+/* DEBUG */c++;
+/* DEBUG */uint64_t n = glfwGetTimerValue();
+/* DEBUG */if (n - s >= f) { s = n; std::cout << "loop cycles: " << c << "/s" << std::endl; c = 0; }
 			if (!m_Minimized)
 			{
+				glClearColor(1, 0, 1, 1);
+				glClear(GL_COLOR_BUFFER_BIT);
+
 				for (Layer* layer : m_LayerStack)
 					layer->OnUpdate();
 //TODO				layer->OnUpdate(timestep);

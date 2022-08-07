@@ -2,6 +2,7 @@
 
 #include "HeliosEngine/Core/Base.h"
 #include "HeliosEngine/Events/Event.h"
+#include "HeliosEngine/Renderer/OpenGL/GLContext.h"
 
 #include "GLFW/glfw3.h"
 
@@ -52,6 +53,7 @@ namespace HeliosEngine {
 
 	private:
 		GLFWwindow* m_Window;
+		GLContext* m_Context;
 
 		struct WindowData
 		{
