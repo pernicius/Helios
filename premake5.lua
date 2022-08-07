@@ -67,3 +67,5 @@ workspace "Helios"
 --		include("projects.server")
 
 	group ""
+
+	include("vendor/premake5")
