@@ -18,7 +18,8 @@ project "HeliosGame"
 		"source",
 		"%{wks.location}/projects.client/HeliosEngine/source",
 		"%{wks.location}/projects.client/HeliosEngine/vendor/spdlog/include",
-		"%{wks.location}/projects.client/HeliosEngine/vendor/glfw/include"
+		"%{wks.location}/projects.client/HeliosEngine/vendor/glfw/include",
+		"%{wks.location}/projects.client/HeliosEngine/vendor/glm"
 	}
 	
 	

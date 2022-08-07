@@ -23,7 +23,8 @@ project "HeliosEngine"
 		"source",
 		"vendor/spdlog/include",
 		"vendor/glfw/include",
-		"vendor/glad/include"
+		"vendor/glad/include",
+		"vendor/glm"
 	}
 	
 	links {
