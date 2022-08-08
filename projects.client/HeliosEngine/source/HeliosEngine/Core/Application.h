@@ -7,6 +7,8 @@
 #include "HeliosEngine/Events/Event.h"
 #include "HeliosEngine/Events/ApplicationEvent.h"
 
+#include "HeliosEngine/Renderer/Shader.h"
+
 
 namespace HeliosEngine {
 
@@ -73,6 +75,7 @@ namespace HeliosEngine {
 		friend int AppMain(int argc, char** argv);
 
 		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		std::unique_ptr<Shader> m_Shader;
 	};
 
 

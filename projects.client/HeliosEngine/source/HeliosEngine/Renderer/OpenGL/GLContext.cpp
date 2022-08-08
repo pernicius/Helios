@@ -22,6 +22,7 @@ namespace HeliosEngine {
 		glfwMakeContextCurrent(m_WindowHandle);
 		int version = gladLoadGL(glfwGetProcAddress);
 		LOG_CORE_ASSERT(version, "Failed to initialize OpenGL context!");
+
 		LOG_CORE_INFO("OpenGL {0}.{1} Info:", GLAD_VERSION_MAJOR(version), GLAD_VERSION_MINOR(version));
 		LOG_CORE_INFO("  Vendor:   {0}", glGetString(GL_VENDOR));
 		LOG_CORE_INFO("  Renderer: {0}", glGetString(GL_RENDERER));
