@@ -71,6 +71,8 @@ namespace HeliosEngine {
 	private:
 		static Application* s_Instance;
 		friend int AppMain(int argc, char** argv);
+
+		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
 	};
 
 
