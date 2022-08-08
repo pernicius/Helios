@@ -2,7 +2,8 @@
 
 #include "HeliosEngine/Core/Base.h"
 #include "HeliosEngine/Events/Event.h"
-#include "HeliosEngine/Renderer/OpenGL/GLContext.h"
+
+#include "Platform/Renderer/OpenGL/GLContext.h"
 
 #include "GLFW/glfw3.h"
 

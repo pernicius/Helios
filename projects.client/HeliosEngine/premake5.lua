@@ -34,8 +34,10 @@ project "HeliosEngine"
 	}
 
 	files {
-		"source/**.h",
-		"source/**.cpp"
+		"source/pch_engine.h",
+		"source/pch_engine.cpp",
+		"source/HeliosEngine/**.h",
+		"source/HeliosEngine/**.cpp"
 	}
 
 	filter "platforms:Windows"
@@ -46,6 +48,17 @@ project "HeliosEngine"
 --			"HE_BUILDWITH_RENDERER_VULKAN",
 		}
 
+		files {
+			"source/Platform/System/Windows/**.h",
+			"source/Platform/System/Windows/**.cpp",
+--			"source/Platform/Renderer/DirectX/**.h",
+--			"source/Platform/Renderer/DirectX/**.cpp",
+			"source/Platform/Renderer/OpenGL/**.h",
+			"source/Platform/Renderer/OpenGL/**.cpp",
+--			"source/Platform/Renderer/Vulkan/**.h",
+--			"source/Platform/Renderer/Vulkan/**.cpp",
+		}
+
 	filter "platforms:Linux"
 
 		defines {
@@ -54,12 +67,34 @@ project "HeliosEngine"
 --			"HE_BUILDWITH_RENDERER_VULKAN",
 		}
 
+		files {
+			"source/Platform/System/Linux/**.h",
+			"source/Platform/System/Linux/**.cpp",
+--			"source/Platform/Renderer/DirectX/**.h",
+--			"source/Platform/Renderer/DirectX/**.cpp",
+			"source/Platform/Renderer/OpenGL/**.h",
+			"source/Platform/Renderer/OpenGL/**.cpp",
+--			"source/Platform/Renderer/Vulkan/**.h",
+--			"source/Platform/Renderer/Vulkan/**.cpp",
+		}
+
 	filter "platforms:MacOS"
 
 		defines {
 --			"HE_BUILDWITH_RENDERER_DIRECTX",
 			"HE_BUILDWITH_RENDERER_OPENGL",
 --			"HE_BUILDWITH_RENDERER_VULKAN",
+		}
+		
+		files {
+			"source/Platform/System/MacOS/**.h",
+			"source/Platform/System/MacOS/**.cpp",
+--			"source/Platform/Renderer/DirectX/**.h",
+--			"source/Platform/Renderer/DirectX/**.cpp",
+			"source/Platform/Renderer/OpenGL/**.h",
+			"source/Platform/Renderer/OpenGL/**.cpp",
+--			"source/Platform/Renderer/Vulkan/**.h",
+--			"source/Platform/Renderer/Vulkan/**.cpp",
 		}
 
 	filter "configurations:Debug"

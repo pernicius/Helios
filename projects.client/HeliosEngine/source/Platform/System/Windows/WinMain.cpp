@@ -1,5 +1,4 @@
 #include "pch_engine.h"
-#ifdef HE_SYSTEM_WINDOWS
 
 #include "HeliosEngine/Core/Application.h"
 #include <Windows.h>
@@ -15,6 +14,3 @@ int APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmd
 {
 	return HeliosEngine::AppMain(__argc, __argv);
 }
-
-
-#endif // HE_SYSTEM_WINDOWS
