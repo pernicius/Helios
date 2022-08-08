@@ -1,7 +1,6 @@
 #include "pch_engine.h"
 
 #include "HeliosEngine/Renderer/Shader.h"
-#include "HeliosEngine/Core/Log.h"
 
 #include "glad/gl.h"
 

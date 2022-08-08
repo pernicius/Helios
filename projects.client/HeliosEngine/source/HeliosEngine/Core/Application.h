@@ -1,8 +1,6 @@
 #pragma once
 
-#include "HeliosEngine/Core/Base.h"
 #include "HeliosEngine/Core/LayerStack.h"
-#include "HeliosEngine/Core/Log.h"
 #include "HeliosEngine/Core/Window.h"
 #include "HeliosEngine/Events/Event.h"
 #include "HeliosEngine/Events/ApplicationEvent.h"
@@ -77,8 +75,8 @@ namespace HeliosEngine {
 
 		unsigned int m_VertexArray;
 		std::unique_ptr<Shader> m_Shader;
-		std::unique_ptr<VertexBuffer> m_VertexBuffer;
-		std::unique_ptr<IndexBuffer> m_IndexBuffer;
+		Ref<VertexBuffer> m_VertexBuffer;
+		Ref<IndexBuffer> m_IndexBuffer;
 	};
 
 

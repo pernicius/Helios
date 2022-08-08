@@ -1,9 +1,10 @@
 #pragma once
 
 // HeliosEngine - Core
+#include <HeliosEngine/Core/Base.h>
+#include <HeliosEngine/Core/Log.h>
 #include <HeliosEngine/Core/Application.h>
 #include <HeliosEngine/Core/Layer.h>
-#include <HeliosEngine/Core/Log.h>
 
 // HeliosEngine - Events
 #include <HeliosEngine/Events/Event.h>

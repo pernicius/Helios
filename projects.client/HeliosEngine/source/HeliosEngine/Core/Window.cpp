@@ -1,7 +1,6 @@
 #include "pch_engine.h"
 
 #include "HeliosEngine/Core/Window.h"
-#include "HeliosEngine/Core/Log.h"
 #include "HeliosEngine/Events/ApplicationEvent.h"
 #include "HeliosEngine/Events/MouseEvent.h"
 #include "HeliosEngine/Events/KeyEvent.h"
@@ -62,7 +61,7 @@ namespace HeliosEngine {
 			++s_GLFWWindowCount;
 		}
 
-		m_Context.reset(GraphicsContext::Create(m_Window));
+		m_Context = GraphicsContext::Create(m_Window);
 		m_Context->Init();
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);

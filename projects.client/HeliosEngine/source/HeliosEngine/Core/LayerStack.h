@@ -1,6 +1,5 @@
 #pragma once
 
-#include "HeliosEngine/Core/Base.h"
 #include "HeliosEngine/Core/Layer.h"
 
 

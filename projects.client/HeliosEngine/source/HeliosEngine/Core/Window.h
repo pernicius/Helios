@@ -1,10 +1,8 @@
 #pragma once
 
-#include "HeliosEngine/Core/Base.h"
 #include "HeliosEngine/Events/Event.h"
 
 #include "HeliosEngine/Renderer/GraphicsContext.h"
-//#include "Platform/Renderer/OpenGL/GLContext.h"
 
 #include "GLFW/glfw3.h"
 
@@ -55,8 +53,7 @@ namespace HeliosEngine {
 
 	private:
 		GLFWwindow* m_Window;
-//		GLContext* m_Context;
-		std::unique_ptr<GraphicsContext> m_Context;
+		Scope<GraphicsContext> m_Context;
 
 		struct WindowData
 		{

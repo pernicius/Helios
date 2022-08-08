@@ -3,3 +3,6 @@
 #include <memory>
 #include <iostream>
 #include <vector>
+
+#include "HeliosEngine/Core/Base.h"
+#include "HeliosEngine/Core/Log.h"

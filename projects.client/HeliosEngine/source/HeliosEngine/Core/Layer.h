@@ -1,6 +1,5 @@
 #pragma once
 
-#include "HeliosEngine/Core/Base.h"
 //TODO:#include "HeliosEngine/Core/Timestep.h"
 #include "HeliosEngine/Events/Event.h"
 

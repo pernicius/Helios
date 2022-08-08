@@ -1,7 +1,5 @@
 #include "pch_engine.h"
 
-#include "HeliosEngine/Core/Log.h"
-
 #include "HeliosEngine/Renderer/Renderer.h"
 #include "HeliosEngine/Renderer/Buffer.h"
 
@@ -14,7 +12,7 @@
 namespace HeliosEngine {
 
 
-	VertexBuffer* VertexBuffer::Create(float* vertices, uint32_t size)
+	Ref<VertexBuffer> VertexBuffer::Create(float* vertices, uint32_t size)
 	{
 		switch (Renderer::GetAPI())
 		{
@@ -22,7 +20,7 @@ namespace HeliosEngine {
 
 // Platformspezific
 #ifdef HE_BUILDWITH_RENDERER_OPENGL
-		case RendererAPI::OpenGL: return new GLVertexBuffer(vertices, size);
+		case RendererAPI::OpenGL: return CreateRef<GLVertexBuffer>(vertices, size);
 #endif
 
 		default: LOG_CORE_ASSERT(false, "Unknown RendererAPI!"); return nullptr;
@@ -30,7 +28,7 @@ namespace HeliosEngine {
 	}
 
 
-	IndexBuffer* IndexBuffer::Create(uint32_t* indices, uint32_t count)
+	Ref<IndexBuffer> IndexBuffer::Create(uint32_t* indices, uint32_t count)
 	{
 		switch (Renderer::GetAPI())
 		{
@@ -38,7 +36,7 @@ namespace HeliosEngine {
 
 			// Platformspezific
 #ifdef HE_BUILDWITH_RENDERER_OPENGL
-		case RendererAPI::OpenGL: return new GLIndexBuffer(indices, count);
+		case RendererAPI::OpenGL: return CreateRef<GLIndexBuffer>(indices, count);
 #endif
 
 		default: LOG_CORE_ASSERT(false, "Unknown RendererAPI!"); return nullptr;

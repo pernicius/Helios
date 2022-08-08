@@ -1,7 +1,5 @@
 #include "pch_engine.h"
 
-#include "HeliosEngine/Core/Log.h"
-
 #include "HeliosEngine/Renderer/Renderer.h"
 #include "HeliosEngine/Renderer/GraphicsContext.h"
 
@@ -14,7 +12,7 @@
 namespace HeliosEngine {
 
 
-	GraphicsContext* GraphicsContext::Create(GLFWwindow* window)
+	Scope<GraphicsContext> GraphicsContext::Create(GLFWwindow* window)
 	{
 		switch (Renderer::GetAPI())
 		{
@@ -22,7 +20,7 @@ namespace HeliosEngine {
 
 			// Platformspezific
 #ifdef HE_BUILDWITH_RENDERER_OPENGL
-		case RendererAPI::OpenGL: return new GLContext(window);
+		case RendererAPI::OpenGL: return CreateScope<GLContext>(window);
 #endif
 
 		default: LOG_CORE_ASSERT(false, "Unknown RendererAPI!"); return nullptr;

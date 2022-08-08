@@ -1,6 +1,5 @@
 #include "pch_engine.h"
 
-#include "HeliosEngine/Core/Log.h"
 #include "Platform/Renderer/OpenGL/GLContext.h"
 
 #include "GLFW/glfw3.h"
