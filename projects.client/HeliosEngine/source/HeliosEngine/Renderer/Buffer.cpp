@@ -22,7 +22,7 @@ namespace HeliosEngine {
 
 // Platformspezific
 #ifdef HE_BUILDWITH_RENDERER_OPENGL
-		case RendererAPI::OpenGL: return new OpenGLVertexBuffer(vertices, size);
+		case RendererAPI::OpenGL: return new GLVertexBuffer(vertices, size);
 #endif
 
 		default: LOG_CORE_ASSERT(false, "Unknown RendererAPI!"); return nullptr;
@@ -38,7 +38,7 @@ namespace HeliosEngine {
 
 			// Platformspezific
 #ifdef HE_BUILDWITH_RENDERER_OPENGL
-		case RendererAPI::OpenGL: return new OpenGLIndexBuffer(indices, count);
+		case RendererAPI::OpenGL: return new GLIndexBuffer(indices, count);
 #endif
 
 		default: LOG_CORE_ASSERT(false, "Unknown RendererAPI!"); return nullptr;

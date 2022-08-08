@@ -5,6 +5,7 @@
 #include "HeliosEngine/Events/ApplicationEvent.h"
 #include "HeliosEngine/Events/MouseEvent.h"
 #include "HeliosEngine/Events/KeyEvent.h"
+#include "HeliosEngine/Renderer/Renderer.h"
 
 #include "GLFW/glfw3.h"
 
@@ -53,18 +54,16 @@ namespace HeliosEngine {
 		}
 
 		{
-#if defined(HE_BUILD_DEBUG)
-//			if (Renderer::GetAPI() == RendererAPI::API::OpenGL)
+#if defined(HE_BUILD_DEBUG) && defined(HE_BUILDWITH_RENDERER_OPENGL)
+			if (Renderer::GetAPI() == RendererAPI::OpenGL)
 				glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
 #endif
 			m_Window = glfwCreateWindow((int)spec.Width, (int)spec.Height, m_Data.Title.c_str(), nullptr, nullptr);
 			++s_GLFWWindowCount;
 		}
 
-		m_Context = new GLContext(m_Window);
+		m_Context.reset(GraphicsContext::Create(m_Window));
 		m_Context->Init();
-//		m_Context = GraphicsContext::Create(m_Window);
-//		m_Context->Init();
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);

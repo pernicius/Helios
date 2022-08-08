@@ -10,16 +10,16 @@
 namespace HeliosEngine {
 
 
-	GLContext::GLContext(GLFWwindow* windowHandle)
-		: m_WindowHandle(windowHandle)
+	GLContext::GLContext(GLFWwindow* window)
+		: m_Window(window)
 	{
-		LOG_CORE_ASSERT(windowHandle, "Window handle is null!")
+		LOG_CORE_ASSERT(window, "Window handle is null!")
 	}
 
 
 	void GLContext::Init()
 	{
-		glfwMakeContextCurrent(m_WindowHandle);
+		glfwMakeContextCurrent(m_Window);
 		int version = gladLoadGL(glfwGetProcAddress);
 		LOG_CORE_ASSERT(version, "Failed to initialize OpenGL context!");
 
@@ -32,7 +32,7 @@ namespace HeliosEngine {
 
 	void GLContext::SwapBuffers()
 	{
-		glfwSwapBuffers(m_WindowHandle);
+		glfwSwapBuffers(m_Window);
 	}
 
 

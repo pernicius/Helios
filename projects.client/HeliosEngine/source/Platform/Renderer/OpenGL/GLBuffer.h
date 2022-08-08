@@ -8,11 +8,11 @@
 namespace HeliosEngine {
 
 
-	class OpenGLVertexBuffer : public VertexBuffer
+	class GLVertexBuffer : public VertexBuffer
 	{
 	public:
-		OpenGLVertexBuffer(float* vertices, uint32_t size);
-		~OpenGLVertexBuffer();
+		GLVertexBuffer(float* vertices, uint32_t size);
+		~GLVertexBuffer();
 
 		void Bind() const override;
 		void Unbind() const override;
@@ -21,11 +21,11 @@ namespace HeliosEngine {
 	};
 
 
-	class OpenGLIndexBuffer : public IndexBuffer
+	class GLIndexBuffer : public IndexBuffer
 	{
 	public:
-		OpenGLIndexBuffer(uint32_t* indices, uint32_t count);
-		~OpenGLIndexBuffer();
+		GLIndexBuffer(uint32_t* indices, uint32_t count);
+		~GLIndexBuffer();
 
 		void Bind() const override;
 		void Unbind() const override;
