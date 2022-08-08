@@ -11,6 +11,32 @@
 namespace HeliosEngine {
 
 
+	static GLenum ShaderDataType2OpenGLBaseType(ShaderDataType type)
+	{
+		switch (type)
+		{
+			case ShaderDataType::None:
+			case ShaderDataType::Float:
+			case ShaderDataType::Float2:
+			case ShaderDataType::Float3:
+			case ShaderDataType::Float4:
+			case ShaderDataType::Mat3:
+			case ShaderDataType::Mat4:
+				return GL_FLOAT;
+			case ShaderDataType::Int:
+			case ShaderDataType::Int2:
+			case ShaderDataType::Int3:
+			case ShaderDataType::Int4:
+				return GL_INT;
+			case ShaderDataType::Bool:
+				return GL_BOOL;
+		}
+
+		LOG_CORE_ASSERT(false, "Unknown ShaderDataType!");
+		return 0;
+	}
+
+
 	int AppMain(int argc, char** argv)
 	{
 		auto app = CreateApplication({ argc, argv });
@@ -50,15 +76,34 @@ namespace HeliosEngine {
 		glGenVertexArrays(1, &m_VertexArray);
 		glBindVertexArray(m_VertexArray);
 
-		float vertices[3 * 3] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.0f,  0.5f, 0.0f
+		float vertices[3 * 7] = {
+			-0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
+			 0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f,
+			 0.0f,  0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f
 		};
 		m_VertexBuffer = VertexBuffer::Create(vertices, sizeof(vertices));
 
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+		{
+			BufferLayout layout = {
+				{ ShaderDataType::Float3, "a_Position"},
+				{ ShaderDataType::Float4, "a_Color"}
+			};
+		m_VertexBuffer->SetLayout(layout);
+		}
+
+		uint32_t index = 0;
+		const auto& layout = m_VertexBuffer->GetLayout();
+		for (const auto& element : layout)
+		{
+			glEnableVertexAttribArray(index);
+			glVertexAttribPointer(index,
+				element.GetComponentCount(),
+				ShaderDataType2OpenGLBaseType(element.Type),
+				element.Normalized ? GL_TRUE : GL_FALSE,
+				layout.GetStride(),
+				(const void*)element.Offset);
+			index++;
+		}
 
 		// index buffer
 		unsigned int indices[3] = {
@@ -70,12 +115,15 @@ namespace HeliosEngine {
 			#version 330 core
 
 			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec4 a_Color;
 
 			out vec3 v_Position;
+			out vec4 v_Color;
 
 			void main()
 			{
 				v_Position = a_Position;
+				v_Color = a_Color;
 				gl_Position = vec4(a_Position, 1.0);
 			}
 		)";
@@ -85,10 +133,12 @@ namespace HeliosEngine {
 			layout(location = 0) out vec4 color;
 
 			in vec3 v_Position;
+			in vec4 v_Color;
 
 			void main()
 			{
 				color = vec4(v_Position + 0.5, 1.0);
+				color = v_Color;
 			}
 		)";
 
@@ -147,7 +197,7 @@ namespace HeliosEngine {
 		{
 /* DEBUG */c++;
 /* DEBUG */uint64_t n = glfwGetTimerValue();
-/* DEBUG */if (n - s >= f) { s = n; std::cout << "loop cycles: " << c << "/s" << std::endl; c = 0; }
+/* DEBUG */if (n - s >= f) { s = n; std::ostringstream title; title << "loop cycles: " << c << "/s"; glfwSetWindowTitle((GLFWwindow*)m_Window->GetNativeWindow(), title.str().c_str()); c = 0; }
 			if (!m_Minimized)
 			{
 				glClearColor(0.1f, 0.1f, 0.1f, 1);
