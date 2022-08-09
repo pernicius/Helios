@@ -8,6 +8,7 @@
 #include "HeliosEngine/Renderer/Shader.h"
 #include "HeliosEngine/Renderer/Buffer.h"
 #include "HeliosEngine/Renderer/VertexArray.h"
+#include "HeliosEngine/Renderer/OrthographicCamera.h"
 
 
 namespace HeliosEngine {
@@ -74,8 +75,9 @@ namespace HeliosEngine {
 		static Application* s_Instance;
 		friend int AppMain(int argc, char** argv);
 
-		std::unique_ptr<Shader> m_Shader_1, m_Shader_2;
+		Ref<Shader> m_Shader_1, m_Shader_2;
 		Ref<VertexArray> m_VertexArray_1, m_VertexArray_2;
+		OrthographicCamera m_Camera;
 	};
 
 
