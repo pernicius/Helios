@@ -6,7 +6,21 @@
 namespace HeliosEngine {
 
 
-	RendererAPI Renderer::s_RendererAPI = HE_DEFAULT_RENDERERAPI;
+	void Renderer::BeginScene()
+	{
+	}
+
+
+	void Renderer::EndScene()
+	{
+	}
+
+
+	void Renderer::Submit(const Ref<VertexArray>& vertexArray)
+	{
+		vertexArray->Bind();
+		RenderCommand::DrawIndexed(vertexArray);
+	}
 
 
 } // namespace HeliosEngine

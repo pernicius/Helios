@@ -47,15 +47,19 @@ namespace HeliosEngine {
 
 		if (s_GLFWWindowCount == 0)
 		{
+			LOG_CORE_DEBUG("GLFW Version: {0}", glfwGetVersionString());
+
 			int success = glfwInit();
 			LOG_CORE_ASSERT(success, "Could not initialize GLFW!");
+
 			glfwSetErrorCallback(GLFWErrorCallback);
 		}
 
 		{
 #if defined(HE_BUILD_DEBUG) && defined(HE_BUILDWITH_RENDERER_OPENGL)
-			if (Renderer::GetAPI() == RendererAPI::OpenGL)
-				glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
+//			if (Renderer::GetAPI() == RendererAPI::OpenGL)
+//				glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
+			glfwWindowHint(GLFW_CONTEXT_DEBUG, GLFW_TRUE);
 #endif
 			m_Window = glfwCreateWindow((int)spec.Width, (int)spec.Height, m_Data.Title.c_str(), nullptr, nullptr);
 			++s_GLFWWindowCount;

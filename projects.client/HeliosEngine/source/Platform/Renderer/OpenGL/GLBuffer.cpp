@@ -2,7 +2,6 @@
 
 #include "Platform/Renderer/OpenGL/GLBuffer.h"
 
-#include "GLFW/glfw3.h"
 #include "glad/gl.h"
 
 

@@ -7,6 +7,7 @@
 
 #include "HeliosEngine/Renderer/Shader.h"
 #include "HeliosEngine/Renderer/Buffer.h"
+#include "HeliosEngine/Renderer/VertexArray.h"
 
 
 namespace HeliosEngine {
@@ -73,10 +74,8 @@ namespace HeliosEngine {
 		static Application* s_Instance;
 		friend int AppMain(int argc, char** argv);
 
-		unsigned int m_VertexArray;
-		std::unique_ptr<Shader> m_Shader;
-		Ref<VertexBuffer> m_VertexBuffer;
-		Ref<IndexBuffer> m_IndexBuffer;
+		std::unique_ptr<Shader> m_Shader_1, m_Shader_2;
+		Ref<VertexArray> m_VertexArray_1, m_VertexArray_2;
 	};
 
 
