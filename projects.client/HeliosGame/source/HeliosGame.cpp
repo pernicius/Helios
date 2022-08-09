@@ -7,7 +7,9 @@ class ExampleLayer : public HeliosEngine::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_Camera(-2.0f, 2.0f, -2.0f, 2.0f)
+		: Layer("Example"),
+		m_Camera(-2.0f, 2.0f, -2.0f, 2.0f),
+		m_CameraPosition(0.0f)
 	{
 		m_VertexArray_1 = HeliosEngine::VertexArray::Create();
 
@@ -68,23 +70,33 @@ public:
 
 	void OnUpdate() override
 	{
+		if (HeliosEngine::Input::IsKeyPressed(HeliosEngine::Key::Left))
+			m_CameraPosition.x -= m_CameraSpeed;
+		if (HeliosEngine::Input::IsKeyPressed(HeliosEngine::Key::Right))
+			m_CameraPosition.x += m_CameraSpeed;
+		if (HeliosEngine::Input::IsKeyPressed(HeliosEngine::Key::Down))
+			m_CameraPosition.y -= m_CameraSpeed;
+		if (HeliosEngine::Input::IsKeyPressed(HeliosEngine::Key::Up))
+			m_CameraPosition.y += m_CameraSpeed;
+
+		if (HeliosEngine::Input::IsKeyPressed(HeliosEngine::Key::A))
+			m_CameraRotation += 10 * m_CameraSpeed;
+		if (HeliosEngine::Input::IsKeyPressed(HeliosEngine::Key::D))
+			m_CameraRotation -= 10 * m_CameraSpeed;
+
+
 		HeliosEngine::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		HeliosEngine::RenderCommand::Clear();
-
-		m_Camera.SetPosition({ 0.5f, 0.5f, 0.0f });
-		m_Camera.SetRotation(45.0f);
-
+		m_Camera.SetPosition(m_CameraPosition);
+		m_Camera.SetRotation(m_CameraRotation);
 		HeliosEngine::Renderer::BeginScene(m_Camera);
-
 		HeliosEngine::Renderer::Submit(m_Shader_1, m_VertexArray_1);
-
 		HeliosEngine::Renderer::EndScene();
 	}
 
 
 	void OnEvent(HeliosEngine::Event& event) override
 	{
-		LOG_TRACE("{0}", event);
 	}
 
 
@@ -92,6 +104,9 @@ private:
 	HeliosEngine::Ref<HeliosEngine::Shader> m_Shader_1, m_Shader_2;
 	HeliosEngine::Ref<HeliosEngine::VertexArray> m_VertexArray_1, m_VertexArray_2;
 	HeliosEngine::OrthographicCamera m_Camera;
+	glm::vec3 m_CameraPosition;
+	float m_CameraRotation = 0.0f;
+	float m_CameraSpeed = 0.01f;
 };
 
 

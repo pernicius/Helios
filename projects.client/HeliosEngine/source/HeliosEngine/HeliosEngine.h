@@ -5,10 +5,13 @@
 #include <HeliosEngine/Core/Log.h>
 #include <HeliosEngine/Core/Application.h>
 #include <HeliosEngine/Core/Layer.h>
+#include <HeliosEngine/Core/Input.h>
 
 // HeliosEngine - Events
 #include <HeliosEngine/Events/Event.h>
 #include <HeliosEngine/Events/ApplicationEvent.h>
+#include <HeliosEngine/Events/KeyEvent.h>
+#include <HeliosEngine/Events/MouseEvent.h>
 
 // Renderer
 #include "HeliosEngine/Renderer/Renderer.h"
