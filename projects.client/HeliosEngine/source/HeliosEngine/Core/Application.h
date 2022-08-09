@@ -5,11 +5,6 @@
 #include "HeliosEngine/Events/Event.h"
 #include "HeliosEngine/Events/ApplicationEvent.h"
 
-#include "HeliosEngine/Renderer/Shader.h"
-#include "HeliosEngine/Renderer/Buffer.h"
-#include "HeliosEngine/Renderer/VertexArray.h"
-#include "HeliosEngine/Renderer/OrthographicCamera.h"
-
 
 namespace HeliosEngine {
 
@@ -74,10 +69,6 @@ namespace HeliosEngine {
 	private:
 		static Application* s_Instance;
 		friend int AppMain(int argc, char** argv);
-
-		Ref<Shader> m_Shader_1, m_Shader_2;
-		Ref<VertexArray> m_VertexArray_1, m_VertexArray_2;
-		OrthographicCamera m_Camera;
 	};
 
 
