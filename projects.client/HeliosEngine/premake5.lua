@@ -24,13 +24,14 @@ project "HeliosEngine"
 		"vendor/spdlog/include",
 		"vendor/glfw/include",
 		"vendor/glad/include",
-		"vendor/glm"
+		"vendor/glm",
+		"vendor/imgui"
 	}
 	
 	links {
 		"HeliosEngine.glfw",
 		"HeliosEngine.glad2",
---		"opengl32.lib"
+		"HeliosEngine.imgui"
 	}
 
 	files {
@@ -116,3 +117,4 @@ project "HeliosEngine"
 	group "client/HeliosEngine/vendor"
 		include("vendor/glfw")
 		include("vendor/glad")
+		include("vendor/imgui")

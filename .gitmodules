@@ -7,3 +7,7 @@
 [submodule "projects.client/HeliosEngine/vendor/glm"]
 	path = projects.client/HeliosEngine/vendor/glm
 	url = https://github.com/g-truc/glm.git
+[submodule "projects.client/HeliosEngine/vendor/imgui"]
+	path = projects.client/HeliosEngine/vendor/imgui
+	url = https://github.com/pernicius/imgui.git
+	branch = docking
