@@ -13,7 +13,7 @@ namespace HeliosEngine {
 	class ImGuiLayer : public Layer
 	{
 	public:
-		ImGuiLayer();
+		ImGuiLayer(const std::string& inipath);
 		~ImGuiLayer() = default;
 
 		void OnAttach() override;
@@ -28,6 +28,7 @@ namespace HeliosEngine {
 		void SetThemeColors();
 	private:
 		bool m_BlockEvents = true;
+		std::string m_IniPath;
 	};
 
 

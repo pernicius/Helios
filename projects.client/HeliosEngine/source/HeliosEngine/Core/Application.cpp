@@ -46,7 +46,9 @@ namespace HeliosEngine {
 		m_Window = Window::Create(WindowSpecification(m_Specification.Name));
 		m_Window->SetEventCallback(HE_BIND_EVENT_FN(Application::OnEvent));
 
-		m_ImGuiLayer = new ImGuiLayer();
+		static std::string inipath = m_Specification.WorkingDirectory;
+		inipath += DIR_SEP  "imgui.ini";
+		m_ImGuiLayer = new ImGuiLayer(inipath);
 		PushOverlay(m_ImGuiLayer);
 	}
 

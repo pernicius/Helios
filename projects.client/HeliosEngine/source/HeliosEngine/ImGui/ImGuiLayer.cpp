@@ -16,8 +16,8 @@
 namespace HeliosEngine {
 
 
-	ImGuiLayer::ImGuiLayer()
-		: Layer("ImGuiLayer")
+	ImGuiLayer::ImGuiLayer(const std::string& inipath)
+		: Layer("ImGuiLayer"), m_IniPath(inipath)
 	{
 	}
 
@@ -37,10 +37,7 @@ namespace HeliosEngine {
 
 		// path to imgui.ini
 		// see also... https://github.com/ocornut/imgui/issues/4294#issuecomment-874720489
-		// TODO: better way to set this
-		static std::string inipath = Utils::GetExePath();
-		inipath += DIR_SEP  "imgui.ini";
-		io.IniFilename = inipath.c_str();
+		io.IniFilename = m_IniPath.c_str();
 
 		// Setup Dear ImGui style
 		ImGui::StyleColorsDark();
