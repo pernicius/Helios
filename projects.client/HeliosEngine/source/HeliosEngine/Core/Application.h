@@ -5,6 +5,8 @@
 #include "HeliosEngine/Events/Event.h"
 #include "HeliosEngine/Events/ApplicationEvent.h"
 
+#include "HeliosEngine/ImGui/ImGuiLayer.h"
+
 
 namespace HeliosEngine {
 
@@ -63,6 +65,7 @@ namespace HeliosEngine {
 	private:
 		ApplicationSpecification m_Specification;
 		Scope<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		bool m_Minimized = false;
 		LayerStack m_LayerStack;

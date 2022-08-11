@@ -17,6 +17,7 @@ namespace HeliosEngine {
 		virtual void OnDetach() {}
 //TODO		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnUpdate() {}
+		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 
 		const std::string& GetName() const { return m_DebugName; }

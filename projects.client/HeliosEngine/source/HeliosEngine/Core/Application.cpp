@@ -6,6 +6,8 @@
 
 #include "GLFW/glfw3.h"
 
+#include "imgui.h"
+
 
 namespace HeliosEngine {
 
@@ -43,6 +45,9 @@ namespace HeliosEngine {
 
 		m_Window = Window::Create(WindowSpecification(m_Specification.Name));
 		m_Window->SetEventCallback(HE_BIND_EVENT_FN(Application::OnEvent));
+
+		m_ImGuiLayer = new ImGuiLayer();
+		PushOverlay(m_ImGuiLayer);
 	}
 
 
@@ -99,10 +104,16 @@ namespace HeliosEngine {
 /* DEBUG */if (n - s >= f) { s = n; std::ostringstream title; title << "loop cycles: " << c << "/s"; glfwSetWindowTitle((GLFWwindow*)m_Window->GetNativeWindow(), title.str().c_str()); c = 0; }
 			if (!m_Minimized)
 			{
-
 				for (Layer* layer : m_LayerStack)
 					layer->OnUpdate();
 //TODO				layer->OnUpdate(timestep);
+
+				m_ImGuiLayer->Begin();
+static bool show = true;
+ImGui::ShowDemoWindow(&show);
+				for (Layer* layer : m_LayerStack)
+					layer->OnImGuiRender();
+				m_ImGuiLayer->End();
 			}
 
 			m_Window->OnUpdate();
