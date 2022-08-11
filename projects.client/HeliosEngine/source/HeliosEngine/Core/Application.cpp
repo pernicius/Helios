@@ -4,9 +4,8 @@
 #include "HeliosEngine/Core/EntryPoint.h"
 #include "HeliosEngine/Utils/Path.h"
 
-#include "GLFW/glfw3.h"
-
-#include "imgui.h"
+#include <GLFW/glfw3.h>
+#include <imgui.h>
 
 
 namespace HeliosEngine {

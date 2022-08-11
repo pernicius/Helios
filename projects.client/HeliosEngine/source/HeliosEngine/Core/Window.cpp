@@ -6,7 +6,7 @@
 #include "HeliosEngine/Events/KeyEvent.h"
 #include "HeliosEngine/Renderer/Renderer.h"
 
-#include "GLFW/glfw3.h"
+#include <GLFW/glfw3.h>
 
 
 namespace HeliosEngine {

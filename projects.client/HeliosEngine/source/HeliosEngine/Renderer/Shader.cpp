@@ -2,8 +2,8 @@
 
 #include "HeliosEngine/Renderer/Shader.h"
 
-#include "glad/gl.h"
-#include "glm/gtc/type_ptr.hpp"
+#include <glad/gl.h>
+#include <glm/gtc/type_ptr.hpp>
 
 
 namespace HeliosEngine {
