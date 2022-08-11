@@ -113,12 +113,44 @@ namespace HeliosEngine {
 	}
 
 
+// Code is taken from ImGui_ImplGlfw_TranslateUntranslatedKey()
+// see also: ImGui_ImplGlfw_KeyCallback()
+	// GLFW 3.1+ attempts to "untranslate" keys, which goes the opposite of what every other framework does, making using lettered shortcuts difficult.
+	// (It had reasons to do so: namely GLFW is/was more likely to be used for WASD-type game controls rather than lettered shortcuts, but IHMO the 3.1 change could have been done differently)
+	// See https://github.com/glfw/glfw/issues/1502 for details.
+	// Adding a workaround to undo this (so our keys are translated->untranslated->translated, likely a lossy process).
+	// This won't cover edge cases but this is at least going to cover common cases.
+	static int Window_TranslateKeyCode(int key, int scancode)
+	{
+		if (key >= GLFW_KEY_KP_0 && key <= GLFW_KEY_KP_EQUAL)
+			return key;
+		const char* key_name = glfwGetKeyName(key, scancode);
+		if (key_name && key_name[0] != 0 && key_name[1] == 0)
+		{
+			const char char_names[] = "`-=[]\\,;\'./";
+			const int char_keys[] = { GLFW_KEY_GRAVE_ACCENT, GLFW_KEY_MINUS, GLFW_KEY_EQUAL, GLFW_KEY_LEFT_BRACKET, GLFW_KEY_RIGHT_BRACKET, GLFW_KEY_BACKSLASH, GLFW_KEY_COMMA, GLFW_KEY_SEMICOLON, GLFW_KEY_APOSTROPHE, GLFW_KEY_PERIOD, GLFW_KEY_SLASH, 0 };
+//			LOG_CORE_ASSERT(sizeof() == sizeof());
+//			IM_ASSERT(IM_ARRAYSIZE(char_names) == IM_ARRAYSIZE(char_keys));
+			if (key_name[0] >= '0' && key_name[0] <= '9') { key = GLFW_KEY_0 + (key_name[0] - '0'); }
+			else if (key_name[0] >= 'A' && key_name[0] <= 'Z') { key = GLFW_KEY_A + (key_name[0] - 'A'); }
+			else if (key_name[0] >= 'a' && key_name[0] <= 'z') { key = GLFW_KEY_A + (key_name[0] - 'a'); }
+			else if (const char* p = strchr(char_names, key_name[0])) { key = char_keys[p - char_names]; }
+		}
+		return key;
+	}
+// Code is taken from ImGui_ImplGlfw_TranslateUntranslatedKey()
+
+
 	void Window::InitCallbacks()
 	{
 		// Set GLFW callbacks (Key input)
 		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+// TODO: KeyCode translation/localization
+//LOG_CORE_DEBUG("KeyCallback(Key:{0}, scancode:{1}, keyname:{2})", key, scancode, glfwGetKeyName(key, scancode));
+//int trans_key = Window_TranslateKeyCode(key, scancode);
+//LOG_CORE_DEBUG("Translated(Key:{0})", trans_key);
 
 				switch (action)
 				{
