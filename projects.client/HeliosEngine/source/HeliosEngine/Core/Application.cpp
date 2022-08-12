@@ -2,6 +2,8 @@
 
 #include "HeliosEngine/Core/Application.h"
 #include "HeliosEngine/Core/EntryPoint.h"
+#include "HeliosEngine/Core/Timer.h"
+#include "HeliosEngine/Core/Timestep.h"
 #include "HeliosEngine/Utils/Path.h"
 
 #include <GLFW/glfw3.h>
@@ -95,19 +97,22 @@ namespace HeliosEngine {
 
 	void Application::Run()
 	{
-/* DEBUG */uint64_t f = glfwGetTimerFrequency();
-/* DEBUG */uint64_t s = glfwGetTimerValue();
-/* DEBUG */int c = 0;
+		Timer RunLoopTimer;
 		while (m_Running)
 		{
-/* DEBUG */c++;
-/* DEBUG */uint64_t n = glfwGetTimerValue();
-/* DEBUG */if (n - s >= f) { s = n; std::ostringstream title; title << "loop cycles: " << c << "/s"; glfwSetWindowTitle((GLFWwindow*)m_Window->GetNativeWindow(), title.str().c_str()); c = 0; }
+			Timestep timestep = RunLoopTimer.Elapsed();
+			RunLoopTimer.Reset();
+
+			{ // tempoary for debuging
+				std::ostringstream title;
+				title << "FPS: " << (int)(1.0f / timestep) << " (" << timestep.GetMilliseconds() << " ms)";
+				glfwSetWindowTitle((GLFWwindow*)m_Window->GetNativeWindow(), title.str().c_str());
+			}
+
 			if (!m_Minimized)
 			{
 				for (Layer* layer : m_LayerStack)
-					layer->OnUpdate();
-//TODO				layer->OnUpdate(timestep);
+					layer->OnUpdate(timestep);
 
 				m_ImGuiLayer->Begin();
 static bool show = true;

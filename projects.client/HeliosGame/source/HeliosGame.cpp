@@ -68,21 +68,21 @@ public:
 	}
 
 
-	void OnUpdate() override
+	void OnUpdate(HeliosEngine::Timestep ts) override
 	{
 		if (HeliosEngine::Input::IsKeyPressed(HeliosEngine::Key::Left))
-			m_CameraPosition.x -= m_CameraSpeed;
+			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
 		if (HeliosEngine::Input::IsKeyPressed(HeliosEngine::Key::Right))
-			m_CameraPosition.x += m_CameraSpeed;
+			m_CameraPosition.x += m_CameraMoveSpeed * ts;
 		if (HeliosEngine::Input::IsKeyPressed(HeliosEngine::Key::Down))
-			m_CameraPosition.y -= m_CameraSpeed;
+			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
 		if (HeliosEngine::Input::IsKeyPressed(HeliosEngine::Key::Up))
-			m_CameraPosition.y += m_CameraSpeed;
+			m_CameraPosition.y += m_CameraMoveSpeed * ts;
 
 		if (HeliosEngine::Input::IsKeyPressed(HeliosEngine::Key::A))
-			m_CameraRotation += 10 * m_CameraSpeed;
+			m_CameraRotation += m_CameraRotateSpeed * ts;
 		if (HeliosEngine::Input::IsKeyPressed(HeliosEngine::Key::D))
-			m_CameraRotation -= 10 * m_CameraSpeed;
+			m_CameraRotation -= m_CameraRotateSpeed * ts;
 
 
 		HeliosEngine::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
@@ -106,7 +106,8 @@ private:
 	HeliosEngine::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
 	float m_CameraRotation = 0.0f;
-	float m_CameraSpeed = 0.01f;
+	float m_CameraMoveSpeed = 1.0f;
+	float m_CameraRotateSpeed = 100.0f;
 };
 
 

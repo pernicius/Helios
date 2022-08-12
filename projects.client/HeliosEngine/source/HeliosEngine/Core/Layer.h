@@ -1,6 +1,6 @@
 #pragma once
 
-//TODO:#include "HeliosEngine/Core/Timestep.h"
+#include "HeliosEngine/Core/Timestep.h"
 #include "HeliosEngine/Events/Event.h"
 
 
@@ -15,8 +15,7 @@ namespace HeliosEngine {
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-//TODO		virtual void OnUpdate(Timestep ts) {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 
