@@ -3,6 +3,8 @@
 #include <HeliosEngine/HeliosEngine.h>
 
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <imgui/imgui.h>
 
 
 class ExampleLayer : public HeliosEngine::Layer
@@ -111,11 +113,11 @@ public:
 
 			in vec3 v_Position;
 
-			uniform vec4 u_Color;
+			uniform vec3 u_Color;
 
 			void main()
 			{
-				color = u_Color;
+				color = vec4(u_Color, 1.0);
 			}
 		)";
 		m_Shader_2 = HeliosEngine::Shader::Create("shader2", vs_2, fs_2);
@@ -144,25 +146,29 @@ public:
 		m_Camera.SetRotation(m_CameraRotation);
 		HeliosEngine::Renderer::BeginScene(m_Camera);
 
-		glm::vec4 redColor(0.8f, 0.2f, 0.3f, 1.0f);
-		glm::vec4 blueColor(0.2f, 0.3f, 0.8f, 1.0f);
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
+		m_Shader_2->Bind();
+		m_Shader_2->SetFloat3("u_Color", m_Color);
 		for (int y = 0; y < 20; y++)
 		{
 			for (int x = 0; x < 20; x++)
 			{
 				glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-				if (x % 2 == 0)
-					m_Shader_2->SetFloat4("u_Color", redColor);
-				else
-					m_Shader_2->SetFloat4("u_Color", blueColor);
 				HeliosEngine::Renderer::Submit(m_Shader_2, m_VertexArray_2, transform);
 			}
 		}
 		HeliosEngine::Renderer::Submit(m_Shader_1, m_VertexArray_1);
 
 		HeliosEngine::Renderer::EndScene();
+	}
+
+
+	void OnImGuiRender() override
+	{
+		ImGui::Begin("Settings");
+		ImGui::ColorEdit3("Color", glm::value_ptr(m_Color));
+		ImGui::End();
 	}
 
 
@@ -179,6 +185,7 @@ private:
 	float m_CameraRotation = 0.0f;
 	float m_CameraMoveSpeed = 1.0f;
 	float m_CameraRotateSpeed = 100.0f;
+	glm::vec3 m_Color = { 0.2f, 0.3f, 0.8f };
 };
 
 
