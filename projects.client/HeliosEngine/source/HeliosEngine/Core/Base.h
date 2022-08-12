@@ -6,6 +6,7 @@
 #include <memory>
 #include <functional>
 #include <utility>
+#include <unordered_map>
 
 
 // Platform
