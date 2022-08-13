@@ -5,6 +5,8 @@
 #	include <spdlog/fmt/ostr.h>
 #pragma warning(pop)
 
+#include "HeliosEngine/Debug/DebugBreak.h"
+
 
 namespace HeliosEngine {
 
@@ -64,8 +66,8 @@ namespace HeliosEngine {
 // ASSERT macros
 #ifdef HE_LOG_ASSERTS
 // TODO: current implementation of __debugbreak() is Windows/MSVC only
-#define LOG_CORE_ASSERT(x, ...) { if(!(x)) { LOG_CORE_FATAL("Assertion failed: {0}", __VA_ARGS__); __debugbreak(); } }
-#define LOG_ASSERT(x, ...)      { if(!(x)) { LOG_FATAL("Assertion failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#define LOG_CORE_ASSERT(x, ...) { if(!(x)) { LOG_CORE_FATAL("Assertion failed: {0}", __VA_ARGS__); DebugBreak(); } }
+#define LOG_ASSERT(x, ...)      { if(!(x)) { LOG_FATAL("Assertion failed: {0}", __VA_ARGS__); DebugBreak(); } }
 #else
 #define LOG_CORE_ASSERT(x, ...)
 #define LOG_ASSERT(x, ...)
