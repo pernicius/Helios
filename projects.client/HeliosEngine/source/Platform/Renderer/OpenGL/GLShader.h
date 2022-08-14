@@ -12,7 +12,7 @@ namespace Helios {
 	class GLShader : public Shader
 	{
 	public:
-//		GLShader(const std::string& filepath);
+		GLShader(const std::string& filepath);
 		GLShader(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc);
 		~GLShader();
 
@@ -37,17 +37,18 @@ namespace Helios {
 		void UploadUniformFloat4(const std::string& name, const glm::vec4& value);
 		void UploadUniformMat3(const std::string& name, const glm::mat3& value);
 		void UploadUniformMat4(const std::string& name, const glm::mat4& value);
-//	private:
-//		std::string ReadFile(const std::string& filepath);
-//		std::unordered_map<GLenum, std::string> PreProcess(const std::string& source);
+	private:
+		std::string ReadFile(const std::string& filepath);
+		std::unordered_map<GLenum, std::string> PreProcess(const std::string& source);
 //
 //		void CompileOrGetVulkanBinaries(const std::unordered_map<GLenum, std::string>& shaderSources);
 //		void CompileOrGetOpenGLBinaries();
+		void Compile(const std::unordered_map<GLenum, std::string>& shaderSources);
 //		void CreateProgram();
 //		void Reflect(GLenum stage, const std::vector<uint32_t>& shaderData);
 	private:
 		uint32_t m_RendererID;
-//		std::string m_FilePath;
+		std::string m_FilePath;
 		std::string m_Name;
 
 //		std::unordered_map<GLenum, std::vector<uint32_t>> m_VulkanSPIRV;
