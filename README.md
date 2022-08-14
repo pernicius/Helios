@@ -1,12 +1,12 @@
 # Helios
 Long goal:
-- [ ] an Eve Online inspired environment to setup a server (or group of servers)
+- [ ] an [Eve Online](https://www.eveonline.com/) inspired environment to setup a server (or group of servers)
 - [ ] tools to control the environment
 - [ ] tools to edit the world
 - [ ] a multi platform client
 
 Short goal:
-- [ ] working 3D engine
+- [ ] working 3D engine (inspired/based on [Hazel](https://github.com/TheCherno/Hazel))
 - [ ] working model editor
 
 Things in current development:
