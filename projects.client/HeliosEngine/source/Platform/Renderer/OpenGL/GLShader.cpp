@@ -33,6 +33,13 @@ namespace Helios {
 		std::string source = ReadFile(filepath);
 		auto shaderSources = PreProcess(source);
 		Compile(shaderSources);
+
+		// Extract name from filepath
+		auto lastSlash = filepath.find_last_of("/\\");
+		lastSlash = lastSlash == std::string::npos ? 0 : lastSlash + 1;
+		auto lastDot = filepath.rfind('.');
+		auto count = lastDot == std::string::npos ? filepath.size() - lastSlash : lastDot - lastSlash;
+		m_Name = filepath.substr(lastSlash, count);
 	}
 
 
@@ -224,8 +231,9 @@ namespace Helios {
 
 	void GLShader::Compile(const std::unordered_map<GLenum, std::string>& shaderSources)
 	{
-		std::vector<GLenum> glShaderIDs;
-		glShaderIDs.reserve(shaderSources.size());
+		LOG_CORE_ASSERT(shaderSources.size() <= 2, "GLShader: We only support max 2 shader now!");
+		std::array<GLenum, 2> glShaderIDs = { 0, 0 };
+		int glShaderIDIndex = 0;
 
 		// Get a program object.
 		GLuint program = glCreateProgram();
@@ -266,7 +274,7 @@ namespace Helios {
 
 			// Attach our shaders to our program
 			glAttachShader(program, shader);
-			glShaderIDs.push_back(shader);
+			glShaderIDs[glShaderIDIndex++] = shader;
 		}
 
 		// Link our program
@@ -285,8 +293,11 @@ namespace Helios {
 
 			// cleanup
 			glDeleteProgram(program);
-			for(auto id : glShaderIDs)
-				glDeleteShader(id);
+			for (auto id : glShaderIDs)
+			{
+				if (id)
+					glDeleteShader(id);
+			}
 
 			LOG_CORE_ERROR("GLShader: {0}", infoLog.data());
 			LOG_CORE_ASSERT(false, "GLShader: Shader link failure!");
@@ -295,7 +306,10 @@ namespace Helios {
 
 		// cleanup
 		for (auto id : glShaderIDs)
-			glDetachShader(program, id);
+		{
+			if (id)
+				glDetachShader(program, id);
+		}
 
 		// save the shader ID
 		m_RendererID = program;

@@ -127,13 +127,13 @@ public:
 			m_Shader_2 = Helios::Shader::Create("shader2", vs_2, fs_2);
 		}
 		// shader 3 (texture) /////////////////////////////////////////////////
-		m_TextureShader = Helios::Shader::Create("assets/shaders/Texture.glsl");
+		auto texShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
 		m_Texture = Helios::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_LogoTexture = Helios::Texture2D::Create("assets/textures/ChernoLogo.png");
 
-		m_TextureShader->Bind();
-		m_TextureShader->SetInt("u_Texture", 0);
+		texShader->Bind();
+		texShader->SetInt("u_Texture", 0);
 
 	}
 
@@ -175,11 +175,12 @@ public:
 			}
 		}
 
+		auto texShader = m_ShaderLibrary.Get("Texture");
 
 		m_Texture->Bind();
-		Helios::Renderer::Submit(m_TextureShader, m_VertexArray_2, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Helios::Renderer::Submit(texShader, m_VertexArray_2, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		m_LogoTexture->Bind();
-		Helios::Renderer::Submit(m_TextureShader, m_VertexArray_2, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Helios::Renderer::Submit(texShader, m_VertexArray_2, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		// triangle
 		//Helios::Renderer::Submit(m_Shader_1, m_VertexArray_1);
@@ -202,7 +203,8 @@ public:
 
 
 private:
-	Helios::Ref<Helios::Shader> m_Shader_1, m_Shader_2, m_TextureShader;
+	Helios::ShaderLibrary m_ShaderLibrary;
+	Helios::Ref<Helios::Shader> m_Shader_1, m_Shader_2;
 	Helios::Ref<Helios::VertexArray> m_VertexArray_1, m_VertexArray_2;
 	Helios::Ref<Helios::Texture2D> m_Texture, m_LogoTexture;
 	Helios::OrthographicCamera m_Camera;
