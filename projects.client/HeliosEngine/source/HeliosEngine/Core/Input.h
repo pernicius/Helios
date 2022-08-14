@@ -5,7 +5,7 @@
 #include <glm/glm.hpp>
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	class Input
@@ -20,4 +20,4 @@ namespace HeliosEngine {
 	};
 
 
-} // namespace HeliosEngine
+} // namespace Helios

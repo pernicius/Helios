@@ -3,7 +3,7 @@
 #include "HeliosEngine/Renderer/Renderer.h"
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	Scope<Renderer::SceneData> Renderer::s_SceneData = CreateScope<Renderer::SceneData>();
@@ -31,4 +31,4 @@ namespace HeliosEngine {
 	}
 
 
-} // namespace HeliosEngine
+} // namespace Helios

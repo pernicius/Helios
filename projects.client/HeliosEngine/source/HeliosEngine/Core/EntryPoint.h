@@ -3,10 +3,4 @@
 #include "HeliosEngine/Core/Application.h"
 
 
-namespace HeliosEngine {
-
-
-	extern HeliosEngine::Application* HeliosEngine::CreateApplication(ApplicationCommandLineArgs args);
-
-
-} // namespace HeliosEngine
+extern Helios::Application* Helios::CreateApplication(ApplicationCommandLineArgs args);

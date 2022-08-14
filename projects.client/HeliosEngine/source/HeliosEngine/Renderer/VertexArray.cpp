@@ -9,7 +9,7 @@
 #endif
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	Ref<VertexArray> VertexArray::Create()
@@ -28,4 +28,4 @@ namespace HeliosEngine {
 	}
 
 
-} // namespace HeliosEngine
+} // namespace Helios

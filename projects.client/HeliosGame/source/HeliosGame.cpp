@@ -7,7 +7,7 @@
 #include <imgui/imgui.h>
 
 
-class ExampleLayer : public HeliosEngine::Layer
+class ExampleLayer : public Helios::Layer
 {
 public:
 	ExampleLayer()
@@ -15,44 +15,44 @@ public:
 		m_Camera(-2.0f, 2.0f, -2.0f, 2.0f),
 		m_CameraPosition(0.0f)
 	{
-		m_VertexArray_1 = HeliosEngine::VertexArray::Create();
+		m_VertexArray_1 = Helios::VertexArray::Create();
 		float vertices_1[3 * 7] = {
 			-0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
 			 0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f,
 			 0.0f,  0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f
 		};
-		HeliosEngine::Ref<HeliosEngine::VertexBuffer> vb_1 = HeliosEngine::VertexBuffer::Create(vertices_1, sizeof(vertices_1));
-		HeliosEngine::BufferLayout layout_1 = {
-			{ HeliosEngine::ShaderDataType::Float3, "a_Position" },
-			{ HeliosEngine::ShaderDataType::Float4, "a_Color" }
+		Helios::Ref<Helios::VertexBuffer> vb_1 = Helios::VertexBuffer::Create(vertices_1, sizeof(vertices_1));
+		Helios::BufferLayout layout_1 = {
+			{ Helios::ShaderDataType::Float3, "a_Position" },
+			{ Helios::ShaderDataType::Float4, "a_Color" }
 		};
 		vb_1->SetLayout(layout_1);
 		m_VertexArray_1->AddVertexBuffer(vb_1);
 		unsigned int indices_1[3] = {
 			0, 1, 2
 		};
-		HeliosEngine::Ref<HeliosEngine::IndexBuffer>ib_1 = HeliosEngine::IndexBuffer::Create(indices_1, sizeof(indices_1) / sizeof(uint32_t));
+		Helios::Ref<Helios::IndexBuffer>ib_1 = Helios::IndexBuffer::Create(indices_1, sizeof(indices_1) / sizeof(uint32_t));
 		m_VertexArray_1->SetIndexBuffer(ib_1);
 
 
-		m_VertexArray_2 = HeliosEngine::VertexArray::Create();
+		m_VertexArray_2 = Helios::VertexArray::Create();
 		float vertices_2[(3+2) * 4] = {
 			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f, // bottom left
 			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f, // bottom right
 			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f, // top right
 			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f, // top left
 		};
-		HeliosEngine::Ref<HeliosEngine::VertexBuffer> vb_2 = HeliosEngine::VertexBuffer::Create(vertices_2, sizeof(vertices_2));
-		HeliosEngine::BufferLayout layout_2 = {
-			{ HeliosEngine::ShaderDataType::Float3, "a_Position" },
-			{ HeliosEngine::ShaderDataType::Float2, "a_TexCoord" }
+		Helios::Ref<Helios::VertexBuffer> vb_2 = Helios::VertexBuffer::Create(vertices_2, sizeof(vertices_2));
+		Helios::BufferLayout layout_2 = {
+			{ Helios::ShaderDataType::Float3, "a_Position" },
+			{ Helios::ShaderDataType::Float2, "a_TexCoord" }
 		};
 		vb_2->SetLayout(layout_2);
 		m_VertexArray_2->AddVertexBuffer(vb_2);
 		unsigned int indices_2[6] = {
 			0, 1, 2, 2, 3, 0
 		};
-		HeliosEngine::Ref<HeliosEngine::IndexBuffer>ib_2 = HeliosEngine::IndexBuffer::Create(indices_2, sizeof(indices_2) / sizeof(uint32_t));
+		Helios::Ref<Helios::IndexBuffer>ib_2 = Helios::IndexBuffer::Create(indices_2, sizeof(indices_2) / sizeof(uint32_t));
 		m_VertexArray_2->SetIndexBuffer(ib_2);
 
 		// shader 1 (triangle) ////////////////////////////////////////////////
@@ -90,7 +90,7 @@ public:
 				color = v_Color;
 			}
 			)";
-			m_Shader_1 = HeliosEngine::Shader::Create("shader1", vs_1, fs_1);
+			m_Shader_1 = Helios::Shader::Create("shader1", vs_1, fs_1);
 		}
 		// shader 2 (grid) ////////////////////////////////////////////////////
 		{
@@ -124,7 +124,7 @@ public:
 					color = vec4(u_Color, 1.0);
 				}
 			)";
-			m_Shader_2 = HeliosEngine::Shader::Create("shader2", vs_2, fs_2);
+			m_Shader_2 = Helios::Shader::Create("shader2", vs_2, fs_2);
 		}
 		// shader 3 (texture) /////////////////////////////////////////////////
 		{
@@ -159,37 +159,37 @@ public:
 					pixel = texture(u_Texture, v_TexCoord);
 				}
 			)";
-			m_TextureShader = HeliosEngine::Shader::Create("shader3", vs_3, fs_3);
+			m_TextureShader = Helios::Shader::Create("shader3", vs_3, fs_3);
 		}
 
-		m_Texture = HeliosEngine::Texture2D::Create("assets/textures/Checkerboard.png");
+		m_Texture = Helios::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_TextureShader->Bind();
 		m_TextureShader->SetInt("u_Texture", 0);
 
 	}
 
 
-	void OnUpdate(HeliosEngine::Timestep ts) override
+	void OnUpdate(Helios::Timestep ts) override
 	{
-		if (HeliosEngine::Input::IsKeyPressed(HeliosEngine::Key::Left))
+		if (Helios::Input::IsKeyPressed(Helios::Key::Left))
 			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
-		if (HeliosEngine::Input::IsKeyPressed(HeliosEngine::Key::Right))
+		if (Helios::Input::IsKeyPressed(Helios::Key::Right))
 			m_CameraPosition.x += m_CameraMoveSpeed * ts;
-		if (HeliosEngine::Input::IsKeyPressed(HeliosEngine::Key::Down))
+		if (Helios::Input::IsKeyPressed(Helios::Key::Down))
 			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
-		if (HeliosEngine::Input::IsKeyPressed(HeliosEngine::Key::Up))
+		if (Helios::Input::IsKeyPressed(Helios::Key::Up))
 			m_CameraPosition.y += m_CameraMoveSpeed * ts;
 
-		if (HeliosEngine::Input::IsKeyPressed(HeliosEngine::Key::A))
+		if (Helios::Input::IsKeyPressed(Helios::Key::A))
 			m_CameraRotation += m_CameraRotateSpeed * ts;
-		if (HeliosEngine::Input::IsKeyPressed(HeliosEngine::Key::D))
+		if (Helios::Input::IsKeyPressed(Helios::Key::D))
 			m_CameraRotation -= m_CameraRotateSpeed * ts;
 
-		HeliosEngine::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
-		HeliosEngine::RenderCommand::Clear();
+		Helios::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+		Helios::RenderCommand::Clear();
 		m_Camera.SetPosition(m_CameraPosition);
 		m_Camera.SetRotation(m_CameraRotation);
-		HeliosEngine::Renderer::BeginScene(m_Camera);
+		Helios::Renderer::BeginScene(m_Camera);
 
 
 		// grid
@@ -202,18 +202,18 @@ public:
 			{
 				glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-				HeliosEngine::Renderer::Submit(m_Shader_2, m_VertexArray_2, transform);
+				Helios::Renderer::Submit(m_Shader_2, m_VertexArray_2, transform);
 			}
 		}
 
 
 		m_Texture->Bind();
-		HeliosEngine::Renderer::Submit(m_TextureShader, m_VertexArray_2, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Helios::Renderer::Submit(m_TextureShader, m_VertexArray_2, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		// triangle
-		//HeliosEngine::Renderer::Submit(m_Shader_1, m_VertexArray_1);
+		//Helios::Renderer::Submit(m_Shader_1, m_VertexArray_1);
 
-		HeliosEngine::Renderer::EndScene();
+		Helios::Renderer::EndScene();
 	}
 
 
@@ -225,16 +225,16 @@ public:
 	}
 
 
-	void OnEvent(HeliosEngine::Event& event) override
+	void OnEvent(Helios::Event& event) override
 	{
 	}
 
 
 private:
-	HeliosEngine::Ref<HeliosEngine::Shader> m_Shader_1, m_Shader_2, m_TextureShader;
-	HeliosEngine::Ref<HeliosEngine::VertexArray> m_VertexArray_1, m_VertexArray_2;
-	HeliosEngine::Ref<HeliosEngine::Texture2D> m_Texture;
-	HeliosEngine::OrthographicCamera m_Camera;
+	Helios::Ref<Helios::Shader> m_Shader_1, m_Shader_2, m_TextureShader;
+	Helios::Ref<Helios::VertexArray> m_VertexArray_1, m_VertexArray_2;
+	Helios::Ref<Helios::Texture2D> m_Texture;
+	Helios::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
 	float m_CameraRotation = 0.0f;
 	float m_CameraMoveSpeed = 1.0f;
@@ -243,11 +243,11 @@ private:
 };
 
 
-class HeliosGame : public HeliosEngine::Application
+class HeliosGame : public Helios::Application
 {
 public:
-	HeliosGame(const HeliosEngine::ApplicationSpecification& specification)
-		: HeliosEngine::Application(specification)
+	HeliosGame(const Helios::ApplicationSpecification& specification)
+		: Helios::Application(specification)
 	{
 		LOG_INFO("HeliosGame()");
 		PushLayer(new ExampleLayer());
@@ -260,12 +260,12 @@ public:
 };
 
 
-HeliosEngine::Application* HeliosEngine::CreateApplication(HeliosEngine::ApplicationCommandLineArgs args)
+Helios::Application* Helios::CreateApplication(Helios::ApplicationCommandLineArgs args)
 {
 	ApplicationSpecification spec;
 	spec.Name = "HeliosGame";
 	spec.CommandLineArgs = args;
-	spec.hints |= HeliosEngine::Hints::HINT_USE_EXEPATH_AS_CWD;
+	spec.hints |= Helios::Hints::HINT_USE_EXEPATH_AS_CWD;
 
 	return new HeliosGame(spec);
 }

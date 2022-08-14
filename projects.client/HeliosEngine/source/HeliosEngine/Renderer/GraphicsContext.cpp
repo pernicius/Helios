@@ -9,7 +9,7 @@
 #endif
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	Scope<GraphicsContext> GraphicsContext::Create(GLFWwindow* window)
@@ -28,4 +28,4 @@ namespace HeliosEngine {
 	}
 
 
-} // namespace HeliosEngine
+} // namespace Helios

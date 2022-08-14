@@ -3,7 +3,7 @@
 #include <glm/glm.hpp>
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	class Shader
@@ -45,4 +45,4 @@ namespace HeliosEngine {
 //	};
 
 
-} // namespace HeliosEngine
+} // namespace Helios

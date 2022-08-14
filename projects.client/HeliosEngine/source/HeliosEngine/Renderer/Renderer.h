@@ -5,7 +5,7 @@
 #include "HeliosEngine/Renderer/Shader.h"
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	class Renderer
@@ -27,4 +27,4 @@ namespace HeliosEngine {
 	};
 
 
-} // namespace HeliosEngine
+} // namespace Helios

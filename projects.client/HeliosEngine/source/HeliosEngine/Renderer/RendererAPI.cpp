@@ -8,7 +8,7 @@
 #endif
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	RendererAPI::API RendererAPI::s_API = HE_DEFAULT_RENDERERAPI;
@@ -30,4 +30,4 @@ namespace HeliosEngine {
 	}
 
 
-} // namespace HeliosEngine
+} // namespace Helios

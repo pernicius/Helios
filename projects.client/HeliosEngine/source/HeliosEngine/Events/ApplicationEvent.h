@@ -3,7 +3,7 @@
 #include "HeliosEngine/Events/Event.h"
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	class WindowResizeEvent : public Event
@@ -69,4 +69,4 @@ namespace HeliosEngine {
 	};
 
 
-} // namespace HeliosEngine
+} // namespace Helios

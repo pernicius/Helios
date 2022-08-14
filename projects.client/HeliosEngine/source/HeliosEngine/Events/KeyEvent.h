@@ -4,7 +4,7 @@
 #include "HeliosEngine/Core/InputCodes.h"
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	class KeyEvent : public Event
@@ -76,4 +76,4 @@ namespace HeliosEngine {
 	};
 
 
-} // namespace HeliosEngine
+} // namespace Helios

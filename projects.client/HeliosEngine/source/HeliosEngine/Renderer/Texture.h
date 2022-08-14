@@ -1,7 +1,7 @@
 #pragma once
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	class Texture
@@ -33,4 +33,4 @@ namespace HeliosEngine {
 	};
 
 
-} // namespace HeliosEngine
+} // namespace Helios

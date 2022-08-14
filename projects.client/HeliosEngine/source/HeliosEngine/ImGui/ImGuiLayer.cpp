@@ -13,7 +13,7 @@
 #include <glm/glm.hpp>
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	ImGuiLayer::ImGuiLayer(const std::string& inipath)
@@ -157,4 +157,4 @@ namespace HeliosEngine {
 	}
 
 
-} // namespace HeliosEngine
+} // namespace Helios

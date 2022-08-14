@@ -7,7 +7,7 @@
 #include "HeliosEngine/Events/MouseEvent.h"
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	class ImGuiLayer : public Layer
@@ -32,4 +32,4 @@ namespace HeliosEngine {
 	};
 
 
-} // namespace HeliosEngine
+} // namespace Helios

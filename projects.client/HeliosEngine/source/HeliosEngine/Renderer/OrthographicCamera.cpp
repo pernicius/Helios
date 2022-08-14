@@ -5,7 +5,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	OrthographicCamera::OrthographicCamera(float left, float right, float bottom, float top)
@@ -32,4 +32,4 @@ namespace HeliosEngine {
 	}
 
 
-} // namespace HeliosEngine
+} // namespace Helios

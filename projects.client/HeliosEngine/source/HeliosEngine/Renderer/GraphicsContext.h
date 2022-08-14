@@ -3,7 +3,7 @@
 #include <GLFW/glfw3.h>
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	class GraphicsContext
@@ -16,4 +16,4 @@ namespace HeliosEngine {
 	};
 
 
-} // namespace HeliosEngine
+} // namespace Helios

@@ -1,7 +1,7 @@
 #pragma once
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	enum class ShaderDataType
@@ -139,4 +139,4 @@ namespace HeliosEngine {
 	}; // class IndexBuffer
 
 
-} // namespace HeliosEngine
+} // namespace Helios

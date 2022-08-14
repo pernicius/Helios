@@ -9,7 +9,7 @@
 #endif
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	//////////////////////////////////////////////////////////////////////////////
@@ -97,4 +97,4 @@ namespace HeliosEngine {
 //	}
 
 
-} // namespace HeliosEngine
+} // namespace Helios

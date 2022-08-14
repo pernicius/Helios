@@ -3,7 +3,7 @@
 #include "HeliosEngine/Renderer/RendererAPI.h"
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	class RenderCommand
@@ -34,4 +34,4 @@ namespace HeliosEngine {
 	};
 
 
-} // namespace HeliosEngine
+} // namespace Helios

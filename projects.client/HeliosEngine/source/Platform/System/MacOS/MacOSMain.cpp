@@ -5,5 +5,5 @@
 
 int main(int argc, char** argv)
 {
-	return HeliosEngine::AppMain(argc, argv);
+	return Helios::AppMain(argc, argv);
 }

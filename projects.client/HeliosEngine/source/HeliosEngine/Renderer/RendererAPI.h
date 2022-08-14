@@ -5,7 +5,7 @@
 #include <glm/glm.hpp>
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 // related on build options and platform
@@ -50,4 +50,4 @@ namespace HeliosEngine {
 	};
 
 
-} // namespace HeliosEngine
+} // namespace Helios

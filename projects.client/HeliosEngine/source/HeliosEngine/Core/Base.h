@@ -19,7 +19,7 @@
 #endif
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 	template<typename T>
 	using Scope = std::unique_ptr<T>;
@@ -37,4 +37,4 @@ namespace HeliosEngine {
 		return std::make_shared<T>(std::forward<Args>(args)...);
 	}
 
-} // namespace HeliosEngine
+} // namespace Helios

@@ -1,7 +1,7 @@
 #pragma once
 
 
-namespace HeliosEngine
+namespace Helios
 {
 	using MouseCode = uint16_t;
 	namespace Mouse
@@ -166,4 +166,4 @@ namespace HeliosEngine
 	} // namespace Key
 
 
-} // namespace HeliosEngine
+} // namespace Helios

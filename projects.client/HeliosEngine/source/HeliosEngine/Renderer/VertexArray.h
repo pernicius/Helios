@@ -3,7 +3,7 @@
 #include "HeliosEngine/Renderer/Buffer.h"
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	class VertexArray
@@ -24,4 +24,4 @@ namespace HeliosEngine {
 	};
 
 
-} // namespace HeliosEngine
+} // namespace Helios

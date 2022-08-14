@@ -3,7 +3,7 @@
 #include "HeliosEngine/Core/LayerStack.h"
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	LayerStack::~LayerStack()
@@ -52,4 +52,4 @@ namespace HeliosEngine {
 	}
 
 
-} // namespace HeliosEngine
+} // namespace Helios

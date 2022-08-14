@@ -3,7 +3,7 @@
 #include "HeliosEngine/Renderer/RendererAPI.h"
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	class GLRendererAPI : public RendererAPI
@@ -16,4 +16,4 @@ namespace HeliosEngine {
 	};
 
 
-} // namespace HeliosEngine
+} // namespace Helios

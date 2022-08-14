@@ -3,7 +3,7 @@
 #include "HeliosEngine/Renderer/Buffer.h"
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	class GLVertexBuffer : public VertexBuffer
@@ -39,4 +39,4 @@ namespace HeliosEngine {
 	};
 
 
-} // namespace HeliosEngine
+} // namespace Helios

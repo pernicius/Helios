@@ -5,7 +5,7 @@
 #include "glad/gl.h"
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	//////////////////////////////////////////////////////////////////////////////
@@ -69,4 +69,4 @@ namespace HeliosEngine {
 	}
 
 
-} // namespace HeliosEngine
+} // namespace Helios

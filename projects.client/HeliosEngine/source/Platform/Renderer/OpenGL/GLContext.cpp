@@ -6,7 +6,7 @@
 #include "glad/gl.h"
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	GLContext::GLContext(GLFWwindow* window)
@@ -36,4 +36,4 @@ namespace HeliosEngine {
 	}
 
 
-} // namespace HeliosEngine
+} // namespace Helios

@@ -3,7 +3,7 @@
 #include "HeliosEngine/Renderer/VertexArray.h"
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	class GLVertexArray : public VertexArray
@@ -28,4 +28,4 @@ namespace HeliosEngine {
 	};
 
 
-} // namespace HeliosEngine
+} // namespace Helios

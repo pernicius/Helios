@@ -3,10 +3,10 @@
 #include "HeliosEngine/Renderer/RenderCommand.h"
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	Scope<RendererAPI> RenderCommand::s_RendererAPI = RendererAPI::Create();;
 
 
-} // namespace HeliosEngine
+} // namespace Helios

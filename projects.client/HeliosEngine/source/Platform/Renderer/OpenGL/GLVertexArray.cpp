@@ -5,7 +5,7 @@
 #include <glad/gl.h>
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type)

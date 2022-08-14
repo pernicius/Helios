@@ -1,7 +1,7 @@
 #pragma once
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	class Timestep
@@ -21,4 +21,4 @@ namespace HeliosEngine {
 	};
 
 
-} // namespace HeliosEngine
+} // namespace Helios

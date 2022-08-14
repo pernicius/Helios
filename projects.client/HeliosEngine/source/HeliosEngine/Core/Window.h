@@ -7,7 +7,7 @@
 #include <GLFW/glfw3.h>
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	struct WindowSpecification
@@ -67,4 +67,4 @@ namespace HeliosEngine {
 	};
 
 
-} // namespace HeliosEngine
+} // namespace Helios

@@ -9,7 +9,7 @@
 #endif
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	Ref<VertexBuffer> VertexBuffer::Create(float* vertices, uint32_t size)
@@ -44,4 +44,4 @@ namespace HeliosEngine {
 	}
 
 
-} // namespace HeliosEngine
+} // namespace Helios

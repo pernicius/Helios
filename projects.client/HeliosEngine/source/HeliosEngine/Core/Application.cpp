@@ -10,7 +10,7 @@
 #include <imgui.h>
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	int AppMain(int argc, char** argv)
@@ -148,4 +148,4 @@ ImGui::ShowDemoWindow(&show);
 	}
 
 
-} // namespace HeliosEngine
+} // namespace Helios

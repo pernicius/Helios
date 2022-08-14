@@ -7,7 +7,7 @@
 #include "HeliosEngine/ImGui/ImGuiLayer.h"
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	int AppMain(int argc, char** argv);
@@ -79,4 +79,4 @@ namespace HeliosEngine {
 	Application* CreateApplication(ApplicationCommandLineArgs args);
 
 
-} // namespace HeliosEngine
+} // namespace Helios

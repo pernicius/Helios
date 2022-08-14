@@ -3,7 +3,7 @@
 #include "HeliosEngine/Core/Layer.h"
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	Layer::Layer(const std::string& debugName)
@@ -12,4 +12,4 @@ namespace HeliosEngine {
 	}
 
 
-} // namespace HeliosEngine
+} // namespace Helios

@@ -5,7 +5,7 @@
 #include "glad/gl.h"
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	void GLRendererAPI::SetClearColor(const glm::vec4& color)
@@ -26,4 +26,4 @@ namespace HeliosEngine {
 	}
 
 
-} // namespace HeliosEngine
+} // namespace Helios

@@ -9,7 +9,7 @@
 #include <GLFW/glfw3.h>
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	Scope<Window> Window::Create(const WindowSpecification& spec)
@@ -255,4 +255,4 @@ namespace HeliosEngine {
 	}
 
 
-} // namespace HeliosEngine
+} // namespace Helios

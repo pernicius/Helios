@@ -5,7 +5,7 @@
 #include <glad/gl.h>
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	class GLTexture2D : public Texture2D
@@ -40,4 +40,4 @@ namespace HeliosEngine {
 	};
 
 
-} // namespace HeliosEngine
+} // namespace Helios

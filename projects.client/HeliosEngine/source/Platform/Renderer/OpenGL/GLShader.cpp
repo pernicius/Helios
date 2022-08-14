@@ -6,7 +6,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	GLShader::GLShader(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc)
@@ -231,4 +231,4 @@ namespace HeliosEngine {
 	}
 
 
-} // namespace HeliosEngine
+} // namespace Helios

@@ -3,7 +3,7 @@
 #include <chrono>
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	class Timer
@@ -42,4 +42,4 @@ namespace HeliosEngine {
 	};
 
 
-} // namespace HeliosEngine
+} // namespace Helios

@@ -6,7 +6,7 @@
 typedef unsigned int GLenum;
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	class GLShader : public Shader
@@ -57,4 +57,4 @@ namespace HeliosEngine {
 	};
 
 
-} // namespace HeliosEngine
+} // namespace Helios

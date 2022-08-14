@@ -6,7 +6,7 @@
 #include <spdlog/sinks/basic_file_sink.h>
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	Ref<spdlog::logger> Log::s_CoreLogger;
@@ -50,6 +50,6 @@ namespace HeliosEngine {
 	}
 
 
-} // namespace HeliosEngine
+} // namespace Helios
 
 

@@ -4,7 +4,7 @@
 #include "HeliosEngine/Core/InputCodes.h"
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	class MouseMovedEvent : public Event
@@ -101,4 +101,4 @@ namespace HeliosEngine {
 	};
 
 
-} // namespace HeliosEngine
+} // namespace Helios

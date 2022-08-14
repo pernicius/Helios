@@ -9,7 +9,7 @@
 #endif
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	Ref<Texture2D> Texture2D::Create(uint32_t width, uint32_t height)
@@ -44,4 +44,4 @@ namespace HeliosEngine {
 	}
 
 
-} // namespace HeliosEngine
+} // namespace Helios

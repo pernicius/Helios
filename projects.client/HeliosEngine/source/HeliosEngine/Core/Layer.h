@@ -4,7 +4,7 @@
 #include "HeliosEngine/Events/Event.h"
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	class Layer
@@ -25,4 +25,4 @@ namespace HeliosEngine {
 	};
 
 
-} //namespace HeliosEngine
+} //namespace Helios

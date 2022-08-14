@@ -6,7 +6,7 @@
 #include <GLFW/glfw3.h>
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	bool Input::IsKeyPressed(const KeyCode key)
@@ -47,4 +47,4 @@ namespace HeliosEngine {
 	}
 
 
-} // namespace HeliosEngine
+} // namespace Helios

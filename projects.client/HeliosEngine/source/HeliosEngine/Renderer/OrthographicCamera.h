@@ -3,7 +3,7 @@
 #include <glm/glm.hpp>
 
 
-namespace HeliosEngine {
+namespace Helios {
 
 
 	class OrthographicCamera
@@ -34,4 +34,4 @@ namespace HeliosEngine {
 	};
 
 
-} // namespace HeliosEngine
+} // namespace Helios
