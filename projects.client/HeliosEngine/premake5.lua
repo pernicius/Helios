@@ -25,7 +25,8 @@ project "HeliosEngine"
 		"vendor/glfw/include",
 		"vendor/glad/include",
 		"vendor/glm",
-		"vendor/imgui"
+		"vendor/imgui",
+		"vendor/stb"
 	}
 	
 	links {
@@ -38,7 +39,9 @@ project "HeliosEngine"
 		"source/pch_engine.h",
 		"source/pch_engine.cpp",
 		"source/HeliosEngine/**.h",
-		"source/HeliosEngine/**.cpp"
+		"source/HeliosEngine/**.cpp",
+		"vendor/stb/*.h",
+		"vendor/stb/*.cpp"
 	}
 
 	filter "platforms:Windows"

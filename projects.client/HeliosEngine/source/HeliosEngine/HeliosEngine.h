@@ -19,6 +19,7 @@
 #include <HeliosEngine/Renderer/RenderCommand.h>
 #include <HeliosEngine/Renderer/Buffer.h>
 #include <HeliosEngine/Renderer/Shader.h>
+#include <HeliosEngine/Renderer/Texture.h>
 #include <HeliosEngine/Renderer/VertexArray.h>
 #include <HeliosEngine/Renderer/OrthographicCamera.h>
 

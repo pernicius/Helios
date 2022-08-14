@@ -5,7 +5,7 @@
 
 // related on build options and platform
 #ifdef HE_BUILDWITH_RENDERER_OPENGL
-	#include "Platform/Renderer/OpenGL/GLShader.h"
+#	include "Platform/Renderer/OpenGL/GLShader.h"
 #endif
 
 

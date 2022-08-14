@@ -1,4 +1,5 @@
 #include <string>
+#include <sstream>
 #include <filesystem>
 #include <memory>
 #include <iostream>
