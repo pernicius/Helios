@@ -43,8 +43,6 @@ namespace Helios {
 		m_Data.Width = spec.Width;
 		m_Data.Height = spec.Height;
 
-		LOG_CORE_INFO("Creating window {0} ({1}, {2})", spec.Title, spec.Width, spec.Height);
-
 		if (s_GLFWWindowCount == 0)
 		{
 			LOG_CORE_DEBUG("GLFW Version: {0}", glfwGetVersionString());
@@ -55,15 +53,13 @@ namespace Helios {
 			glfwSetErrorCallback(GLFWErrorCallback);
 		}
 
-		{
 #if defined(HE_BUILD_DEBUG) && defined(HE_BUILDWITH_RENDERER_OPENGL)
-//			if (Renderer::GetAPI() == RendererAPI::OpenGL)
-//				glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
+		if (Renderer::GetAPI() == RendererAPI::API::OpenGL)
 			glfwWindowHint(GLFW_CONTEXT_DEBUG, GLFW_TRUE);
+		LOG_CORE_DEBUG("GLFW using debug mode context (hint)");
 #endif
-			m_Window = glfwCreateWindow((int)spec.Width, (int)spec.Height, m_Data.Title.c_str(), nullptr, nullptr);
-			++s_GLFWWindowCount;
-		}
+		m_Window = glfwCreateWindow((int)spec.Width, (int)spec.Height, m_Data.Title.c_str(), nullptr, nullptr);
+		++s_GLFWWindowCount;
 
 		m_Context = GraphicsContext::Create(m_Window);
 		m_Context->Init();

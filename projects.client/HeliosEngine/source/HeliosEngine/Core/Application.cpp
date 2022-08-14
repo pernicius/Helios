@@ -5,6 +5,7 @@
 #include "HeliosEngine/Core/Timer.h"
 #include "HeliosEngine/Core/Timestep.h"
 #include "HeliosEngine/Utils/Path.h"
+#include "HeliosEngine/Renderer/Renderer.h"
 
 #include <GLFW/glfw3.h>
 #include <imgui.h>
@@ -47,6 +48,8 @@ namespace Helios {
 		m_Window = Window::Create(WindowSpecification(m_Specification.Name));
 		m_Window->SetEventCallback(HE_BIND_EVENT_FN(Application::OnEvent));
 
+		Renderer::Init();
+
 		static std::string inipath = m_Specification.WorkingDirectory;
 		inipath += DIR_SEP  "imgui.ini";
 		m_ImGuiLayer = new ImGuiLayer(inipath);
@@ -56,6 +59,7 @@ namespace Helios {
 
 	Application::~Application()
 	{
+		Renderer::Shutdown();
 	}
 
 
@@ -155,6 +159,7 @@ ImGui::ShowDemoWindow(&show);
 		}
 
 		m_Minimized = false;
+		Renderer::OnWindowResize(e.GetWidth(), e.GetHeight());
 
 		return false;
 	}
