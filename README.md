@@ -6,12 +6,16 @@ Long goal:
 - [ ] a multi platform client
 
 Short goal:
-- [ ] working 3D engine (inspired/based on [Hazel](https://github.com/TheCherno/Hazel))
-- [ ] working model editor
+- [ ] a working multi platform 3D engine (inspired/based on [Hazel](https://github.com/TheCherno/Hazel))
+- [ ] a working model/scene editor
 
-Things in current development:
+---
+
+Currently in development:
 - 3D engine
 - Documentation
+
+---
 
 ### Installation
 Read the detailed [installation guide](docu/install.md).

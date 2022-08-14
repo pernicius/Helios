@@ -220,13 +220,11 @@ public:
 	HeliosGame(const Helios::ApplicationSpecification& specification)
 		: Helios::Application(specification)
 	{
-		LOG_INFO("HeliosGame()");
 		PushLayer(new ExampleLayer());
 	}
 
 	~HeliosGame()
 	{
-		LOG_INFO("~HeliosGame()");
 	}
 };
 

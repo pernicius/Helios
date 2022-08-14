@@ -224,7 +224,8 @@ namespace Helios {
 
 	void GLShader::Compile(const std::unordered_map<GLenum, std::string>& shaderSources)
 	{
-		std::vector<GLenum> glShaderIDs;// (shaderSources.size());
+		std::vector<GLenum> glShaderIDs;
+		glShaderIDs.reserve(shaderSources.size());
 
 		// Get a program object.
 		GLuint program = glCreateProgram();
