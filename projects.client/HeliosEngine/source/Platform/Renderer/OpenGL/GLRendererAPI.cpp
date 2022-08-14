@@ -24,6 +24,7 @@ namespace Helios {
 	void GLRendererAPI::Init()
 	{
 #ifdef HE_BUILD_DEBUG
+		// install a message callback for debuging
 		glEnable(GL_DEBUG_OUTPUT);
 		glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
 		glDebugMessageCallback(OpenGLMessageCallback, nullptr);
@@ -32,11 +33,12 @@ namespace Helios {
 		LOG_CORE_DEBUG("OpenGL Renderer: DebugMessageCallback installed");
 #endif
 
+		// activate blending
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-		glEnable(GL_DEPTH_TEST);
-		glEnable(GL_LINE_SMOOTH);
+//		glEnable(GL_DEPTH_TEST);
+//		glEnable(GL_LINE_SMOOTH);
 	}
 
 

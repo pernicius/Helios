@@ -12,7 +12,7 @@ class ExampleLayer : public Helios::Layer
 public:
 	ExampleLayer()
 		: Layer("Example"),
-		m_Camera(-2.0f, 2.0f, -2.0f, 2.0f),
+		m_Camera(-2.0f, 2.0f, -2.0f * 0.75f, 2.0f * 0.75f),
 		m_CameraPosition(0.0f)
 	{
 		m_VertexArray_1 = Helios::VertexArray::Create();
@@ -163,6 +163,8 @@ public:
 		}
 
 		m_Texture = Helios::Texture2D::Create("assets/textures/Checkerboard.png");
+		m_LogoTexture = Helios::Texture2D::Create("assets/textures/ChernoLogo.png");
+
 		m_TextureShader->Bind();
 		m_TextureShader->SetInt("u_Texture", 0);
 
@@ -209,6 +211,8 @@ public:
 
 		m_Texture->Bind();
 		Helios::Renderer::Submit(m_TextureShader, m_VertexArray_2, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		m_LogoTexture->Bind();
+		Helios::Renderer::Submit(m_TextureShader, m_VertexArray_2, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		// triangle
 		//Helios::Renderer::Submit(m_Shader_1, m_VertexArray_1);
@@ -233,7 +237,7 @@ public:
 private:
 	Helios::Ref<Helios::Shader> m_Shader_1, m_Shader_2, m_TextureShader;
 	Helios::Ref<Helios::VertexArray> m_VertexArray_1, m_VertexArray_2;
-	Helios::Ref<Helios::Texture2D> m_Texture;
+	Helios::Ref<Helios::Texture2D> m_Texture, m_LogoTexture;
 	Helios::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
 	float m_CameraRotation = 0.0f;
