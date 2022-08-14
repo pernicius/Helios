@@ -104,10 +104,22 @@ namespace Helios {
 			RunLoopTimer.Reset();
 
 			{ // tempoary for debuging
-				std::ostringstream title;
-				title << "FPS: " << (int)(1.0f / timestep) << " (" << timestep.GetMilliseconds() << " ms)";
-				glfwSetWindowTitle((GLFWwindow*)m_Window->GetNativeWindow(), title.str().c_str());
-			}
+				static int fps = 0;
+				fps += (int)(1.0f / timestep);
+				static int fps_cnt = 0;
+				fps_cnt++;
+				static float fps_ts = 0;
+				fps_ts += timestep;
+				if (fps_ts >= 1.0f)
+				{
+					std::ostringstream title;
+					title << "FPS: " << fps/fps_cnt << " (" << 1000*fps_ts/fps_cnt << " ms)";
+					glfwSetWindowTitle((GLFWwindow*)m_Window->GetNativeWindow(), title.str().c_str());
+					fps = 0;
+					fps_cnt = 0;
+					fps_ts = 0;
+				}
+			} // tempoary for debuging
 
 			if (!m_Minimized)
 			{

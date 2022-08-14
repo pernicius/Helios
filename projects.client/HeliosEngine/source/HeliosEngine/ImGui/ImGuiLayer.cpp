@@ -126,7 +126,7 @@ namespace Helios {
 		auto& colors = ImGui::GetStyle().Colors;
 
 		// Window
-		colors[ImGuiCol_WindowBg]           = ImVec4{ 0.1f,  0.105f,  0.11f,  1.0f };
+		colors[ImGuiCol_WindowBg]           = ImVec4{ 0.1f,  0.105f,  0.11f,  0.8f };
 
 		// Headers
 		colors[ImGuiCol_Header]             = ImVec4{ 0.2f,  0.205f,  0.21f,  1.0f };
