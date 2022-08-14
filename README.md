@@ -13,9 +13,9 @@ If the repository was cloned non-recursively, or for some reason the submodules 
 to clone all the necessary modules.
 
 ### 2. Configuring the Workspace
-After the first cloning and when ever files are moved, renamed, added or deleted you must regenerate the Workspace and Project files with:<br>
-`cd scripts\\windows` and `generate_workspace.bat`<br>
-That will generate all necesarry files for Visual Studio. Helios uses [Premake](https://premake.github.io/) for simple build configuration so the later goal is to support multiple tools across Windows, Linux and MacOS. 
+After the first cloning and when ever files are moved, renamed, added or deleted you have to regenerate the Workspace and Project files with:<br>
+`cd scripts\windows` and `generate_workspace.bat`<br>
+That will generate all necessary files for Visual Studio. Helios uses [Premake](https://premake.github.io/) for a simple build configuration so the later goal is to support multiple tools across Windows, Linux and MacOS. 
 
 ## The Big Target
 Because i use the [Youtube series](https://thecherno.com/engine) from [TheCherno](https://www.youtube.com/user/TheChernoProject) about his Game Engine to learn more C++ and rendering stuff, the development is rather slow.
