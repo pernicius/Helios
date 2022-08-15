@@ -1,7 +1,5 @@
 #include "pch_game.h"
 
-#include <HeliosEngine/HeliosEngine.h>
-
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <imgui/imgui.h>
@@ -11,9 +9,7 @@ class ExampleLayer : public Helios::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"),
-		m_Camera(-2.0f, 2.0f, -2.0f * 0.75f, 2.0f * 0.75f),
-		m_CameraPosition(0.0f)
+		: Layer("Example"), m_CameraController(800.0f / 600.0f, true)
 	{
 		m_VertexArray_1 = Helios::VertexArray::Create();
 		float vertices_1[3 * 7] = {
@@ -134,31 +130,17 @@ public:
 
 		texShader->Bind();
 		texShader->SetInt("u_Texture", 0);
-
 	}
 
 
 	void OnUpdate(Helios::Timestep ts) override
 	{
-		if (Helios::Input::IsKeyPressed(Helios::Key::Left))
-			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
-		if (Helios::Input::IsKeyPressed(Helios::Key::Right))
-			m_CameraPosition.x += m_CameraMoveSpeed * ts;
-		if (Helios::Input::IsKeyPressed(Helios::Key::Down))
-			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
-		if (Helios::Input::IsKeyPressed(Helios::Key::Up))
-			m_CameraPosition.y += m_CameraMoveSpeed * ts;
-
-		if (Helios::Input::IsKeyPressed(Helios::Key::A))
-			m_CameraRotation += m_CameraRotateSpeed * ts;
-		if (Helios::Input::IsKeyPressed(Helios::Key::D))
-			m_CameraRotation -= m_CameraRotateSpeed * ts;
+		m_CameraController.OnUpdate(ts);
 
 		Helios::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Helios::RenderCommand::Clear();
-		m_Camera.SetPosition(m_CameraPosition);
-		m_Camera.SetRotation(m_CameraRotation);
-		Helios::Renderer::BeginScene(m_Camera);
+
+		Helios::Renderer::BeginScene(m_CameraController.GetCamera());
 
 
 		// grid
@@ -197,8 +179,9 @@ public:
 	}
 
 
-	void OnEvent(Helios::Event& event) override
+	void OnEvent(Helios::Event& e) override
 	{
+		m_CameraController.OnEvent(e);
 	}
 
 
@@ -207,11 +190,7 @@ private:
 	Helios::Ref<Helios::Shader> m_Shader_1, m_Shader_2;
 	Helios::Ref<Helios::VertexArray> m_VertexArray_1, m_VertexArray_2;
 	Helios::Ref<Helios::Texture2D> m_Texture, m_LogoTexture;
-	Helios::OrthographicCamera m_Camera;
-	glm::vec3 m_CameraPosition;
-	float m_CameraRotation = 0.0f;
-	float m_CameraMoveSpeed = 1.0f;
-	float m_CameraRotateSpeed = 100.0f;
+	Helios::OrthographicCameraController m_CameraController;
 	glm::vec3 m_Color = { 0.2f, 0.3f, 0.8f };
 };
 

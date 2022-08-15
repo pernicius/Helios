@@ -22,6 +22,7 @@
 #include <HeliosEngine/Renderer/Texture.h>
 #include <HeliosEngine/Renderer/VertexArray.h>
 #include <HeliosEngine/Renderer/OrthographicCamera.h>
+#include <HeliosEngine/Renderer/OrthographicCameraController.h>
 
 // HeliosEngine - EntryPoint for the Application
 #include <HeliosEngine/Core/EntryPoint.h>
